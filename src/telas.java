@@ -86,9 +86,14 @@ public class telas {
 			
 			case 5 :
 				pagina(indice);
-				p("Nome do Campeonato: "); teste = dados.nextLine(); 
-				p("Data de início: ");     teste = dados.nextLine(); 
-				p("Data de término: ");    teste = dados.nextLine();
+				p("Nome do Campeonato: "); 
+				teste = dados.nextLine(); 
+				dados.nextLine();
+				p("Data de início: ");     
+				teste = dados.nextLine(); 
+				p("Data de término: ");    
+				teste = dados.nextLine();
+				dados.nextLine();
 				voltarSair();
 			break;
 			
@@ -107,9 +112,13 @@ public class telas {
 			
 			case 7 :
 				pagina(indice);
-				p("Nome da Equipe: "); teste = dados.nextLine();
-				p("Apelido: ");        teste = dados.nextLine();	
-				p("Mascote: ");        teste = dados.nextLine();
+				p("Nome da Equipe: "); 
+				teste = dados.nextLine();
+				dados.nextLine();
+				p("Apelido: ");        
+				teste = dados.nextLine();
+				p("Mascote: ");        
+				teste = dados.nextLine();
 				voltarSair();
 			break;	
 			
@@ -128,17 +137,21 @@ public class telas {
 			
 			case 9 :
 				pagina(indice);
-				p("Nome do Jogador: ");    teste = dados.nextLine();
-				p("CPF: ");                teste = dados.nextLine();
-				p("Telefone fixo: ");      teste = dados.nextLine();
-				p("Celular: ");            teste = dados.nextLine();
+				p("Nome do Jogador: ");    
+				teste = dados.nextLine();
+				dados.nextLine();
+				p("CPF: ");                
+				teste = dados.nextLine();
+				p("Telefone fixo: ");      
+				teste = dados.nextLine();
+				p("Celular: ");            
+				teste = dados.nextLine();
 				voltarSair();
 			break;
 			
 			case 10 :
 				pagina(indice);
 				p("Jogador		CPF	Telefone fixo	Celular"); 
-				
 				//teste impressao
 				p("testeteste	teste   testeteste 	testeteste");
 				p("testeteste	teste	testeteste	testeteste");
@@ -210,7 +223,7 @@ public class telas {
 	 */
 	public static void cls(){
 		for(int i = 0; i < 15; i++)
-			System.out.println("");
+			l();
 	}
 	
 	/**
