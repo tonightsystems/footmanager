@@ -1,5 +1,13 @@
 import java.util.Scanner;
 public class telas {
+
+	/**
+	 * Versao do sistema
+	 * 
+	 * @type {String}
+	 */
+	public static String versao = "0.1 alpha";
+
 	/**
 	 * Guarda a tela acessado no momento
 	 *
@@ -11,7 +19,7 @@ public class telas {
 	 * 
 	 * @type {Number}
 	 */
-	public static int local = 1;
+	public static int tela = 1;
 
 	/**
 	 * Recebe os dados informado pelo usu·rio
@@ -24,7 +32,7 @@ public class telas {
 	 */
 	public static void main(String[] args) {
 		cabecalho();
-		menu(local);
+		menu(tela);
 	}
 	
 	/**
@@ -52,17 +60,18 @@ public class telas {
 		l();
 		if ( indice > 0){
 			p("Escolha: ");
-			local = dados.nextInt();
-			menu(local);
+			tela = dados.nextInt();
+			menu(tela);
 		}
+		l();
 	}
 	
 	/**
-	 * Imprime cabeçalho no console
+	 * Imprime cabeçalho do programa no console
 	 */
 	public static void cabecalho(){
 		p(t(150));
-		p("FOOTMANAGER      v0.1");
+		p("FOOTMANAGER      v" + versao);
 		p(t(150));
 		l();
 	}
