@@ -7,6 +7,10 @@ public class telas {
 	 * @type {String}
 	 */
 	public static String versao = "0.1 alpha";
+	
+	/**
+	 * Declaracao Variaveis
+	 */
 	public static String titulo, teste;
 
 	/**
