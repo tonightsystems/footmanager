@@ -13,7 +13,6 @@ Thumbs.db
 *.class
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
