@@ -12,6 +12,20 @@ public class Utilitarios {
 	}
 	
 	/**
+	 * Imprime um traco no console
+	 * @param vezes
+	 * @return linha
+	 */
+	public static String t(int vezes){
+		String linha = "";
+		while( vezes > 0 ){
+			linha += "=";
+			vezes--;
+		}
+		return linha;
+	}
+	
+	/**
 	 * Imprime uma linha vazia no console
 	 */
 	public void l(){

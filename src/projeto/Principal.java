@@ -75,7 +75,7 @@ public class Principal {
 	 * Imprime o menu e as telas no console
 	 */
 	public static void menu(int indice){
-		util.p(t(50));
+		util.p(util.t(50));
 		switch(indice){
 		
 			case 1 :
@@ -129,7 +129,7 @@ public class Principal {
 				util.p("testeteste	testetesteteste	testetesteteste");
 				util.l();
 				
-				util.p(t(50));
+				util.p(util.t(50));
 				voltarSair();
 			break;	
 			
@@ -154,7 +154,7 @@ public class Principal {
 				util.p("testeteste	testetesteteste	  testetesteteste");
 				util.l();
 				
-				util.p(t(50));
+				util.p(util.t(50));
 				voltarSair();
 			break;	
 			
@@ -191,7 +191,7 @@ public class Principal {
 				util.p("Saindo...");
 			break;
 		}
-		util.p(t(50));
+		util.p(util.t(50));
 		util.l();
 		if ( indice > 0 && indice < 11 ){
 			util.p("Escolha: ");
@@ -206,24 +206,10 @@ public class Principal {
 	 * @return null
 	 */
 	public static void cabecalho(){
-		util.p(t(150));
+		util.p(util.t(150));
 		util.p("FOOTMANAGER      v" + versao);
-		util.p(t(150));
+		util.p(util.t(150));
 		util.l();
-	}
-	
-	/**
-	 * Imprime um traco no console
-	 * @param vezes
-	 * @return linha
-	 */
-	public static String t(int vezes){
-		String linha = "";
-		while( vezes > 0 ){
-			linha += "=";
-			vezes--;
-		}
-		return linha;
 	}
 	
 	
@@ -244,9 +230,9 @@ public class Principal {
 		if(titulo == 10){titulo2 = "Visualizar jogadores";}
 		
 		util.l();
-		util.p(t(50));
+		util.p(util.t(50));
 		util.p(titulo2);
-		util.p(t(50));
+		util.p(util.t(50));
 		util.l();
 	}
 	
