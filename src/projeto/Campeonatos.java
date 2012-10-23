@@ -1,12 +1,11 @@
 package projeto;
-
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 import projeto.Conexao;
 import projeto.Utilitarios;
 
-public class Equipe {
+public class Campeonatos {
 		
 	/**
 	 * Recebe os dados informados pelo usuario
@@ -35,28 +34,28 @@ public class Equipe {
 	private static String sql = "";
 	
 	/**
-	 * Cadastrar nova equipe
+	 * Cadastrar novo campeonato
 	 */
-	public void cadastrar( ) {
+	public void cadastrar() {
 		try {
 			bd.getConnection();
-			String nome, apelido, mascote;
+			String nome, data_inicio, data_termino;
 			smt = bd.conn.createStatement();
 			
-			System.out.print("Nome da Equipe: "); 
+			util.p("Nome do Campeonato: "); 
 			nome = dados.nextLine();
 					
-			System.out.print("Apelido: ");    
-			apelido = dados.nextLine();
+			util.p("Data de Inicio: ");    
+			data_inicio = dados.nextLine();
 			
-			System.out.print("Mascote: ");
-			mascote = dados.nextLine();	
+			util.p("Data de Termino: ");
+			data_termino = dados.nextLine();	
 			
-			sql = "INSERT INTO equipes(nome, apelido, mascote) " 
+			sql = "INSERT INTO campeonatos(nome, data_inicio, data_termino) " 
 					+ "values( "
 					+ "'" + nome + "', " 
-					+ "'" + apelido + "', " 
-					+ "'" + mascote + "')";
+					+ "'" + data_inicio + "', " 
+					+ "'" + data_termino + "')";
 			
 			smt.execute(sql);
 			bd.conn.close();
@@ -74,22 +73,22 @@ public class Equipe {
 	public void alterar(int id) {
 		try {
 			bd.getConnection();
-			String nome, apelido, mascote;
+			String nome, data_inicio, data_termino;
 			smt = bd.conn.createStatement();
 			
-			System.out.print("Nome da Equipe: "); 
+			util.p("Nome do Campeonato: "); 
 			nome = dados.nextLine();
 					
-			System.out.print("Apelido: ");    
-			apelido = dados.nextLine();
+			util.p("Data de Inicio: ");    
+			data_inicio = dados.nextLine();
 			
-			System.out.print("Mascote: ");
-			mascote = dados.nextLine();	
+			util.p("Data de Termino: ");
+			data_termino = dados.nextLine();
 			
-			sql = "UPDATE equipes set " 
+			sql = "UPDATE campeonatos set " 
 				+ "nome= '" + nome + "' , " 
-				+ "apelido= '" + apelido + "' , " 
-				+ "mascote= '" + mascote + "' "
+				+ "data_inicio= '" + data_inicio + "' , " 
+				+ "data_termino= '" + data_termino + "' "
 				+ "where id=" + id;
 			
 			smt.execute(sql);
@@ -103,19 +102,19 @@ public class Equipe {
 	}
 	
 	/**
-	 * Listar equipes cadastradas
+	 * Listar campeonatos cadastrados
 	 */
 	public void listar( ) {
 		try {
 			bd.getConnection();
-			smt = bd.conn.createStatement(); //createStatement() - Retorna um objeto que representa uma query ou comando
-			ResultSet rs; //Contem o resultado da Query
-			String sql = "select * from equipes";
+			smt = bd.conn.createStatement();
+			ResultSet rs;
+			String sql = "select * from campeonatos";
 			
-			rs = smt.executeQuery(sql); //Executa a Query
+			rs = smt.executeQuery(sql);
 			
 			while( rs.next() == true ){
-				  System.out.println( rs.getInt(1) + "    " + rs.getString(2) + "    " + rs.getString(3)+ "    " + rs.getString(4)); //get - pegar/usar
+				  System.out.println( rs.getInt(1) + "    " + rs.getString(2) + "    " + rs.getString(3)+ "    " + rs.getString(4));
 				}
 				rs.close();
 				smt.close();
@@ -128,14 +127,14 @@ public class Equipe {
 	}
 	
 	/**
-	 * Deletar equipe cadastrada
+	 * Deletar campeonato cadastrado
 	 */
 	public void deletar(int id) {
 		try {
 			bd.getConnection();
 			smt = bd.conn.createStatement();
 			
-			sql = "delete from equipes " 
+			sql = "delete from campeonatos " 
 					+ "where id = " + id;
 			
 			smt.execute(sql);

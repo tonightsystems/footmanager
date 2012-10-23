@@ -18,7 +18,7 @@ public class Principal {
 	public static Utilitarios util = new Utilitarios();
 	
 	/**
-	 * Objeto Utilitarios
+	 * Objeto Equipes
 	 */
 	public static Equipe equipe = new Equipe();
 	
@@ -26,6 +26,8 @@ public class Principal {
 	 * Objeto Conexao
 	 */
 	public static Conexao bd = new Conexao();
+	
+	public static Campeonatos camp = new Campeonatos();
 	
 	/**
 	 * Declaracao Variaveis
@@ -43,10 +45,12 @@ public class Principal {
 	 * 4 = Jogadores
 	 * 5 = Adicionar novo campeonato
 	 * 6 = Listar campeonatos
-	 * 7 = Cadastrar nova equipe
-	 * 8 = Visualizar equipes
-	 * 9 = Cadastrar novo jogador
-	 * 10 = Visualizar jogadores
+	 * 7 = Cadastrar Nova Equipe
+	 * 8 = Visualizar Todas as Equipes
+	 * 9 = Editar Equipe Cadastrada
+	 * 10 = Deletar Equipe Cadastrada
+	 * 11 = Cadastrar novo jogador
+	 * 12 = Visualizar jogadores
 	 * 15 = Voltar	 
 	 * 
 	 * @type {Number}
@@ -58,21 +62,52 @@ public class Principal {
 	 * @type {Scanner}
 	 */
 	public static Scanner dados = new Scanner(System.in);
-
+	
 	/**
-	 * Main
+	 * Metodo que imprime cabecalho do programa no console
+	 * @return null
 	 */
-	public static void main(String[] args) {
-		try {
-			cabecalho();
-			menu(tela);
-		} catch( Exception e  ){
-			System.out.println("Erro: " + e.getMessage() );
-		}
+	public static void cabecalho(){
+		util.p(util.t(150));
+		util.p("FOOTMANAGER      v" + versao);
+		util.p(util.t(150));
+		util.l();
 	}
 	
 	/**
-	 * Imprime o menu e as telas no console
+	 * Metodo que imprime o cabecalho de cada tabela
+	 */
+	public static void cabecalhoTab(String titulo) {
+		util.l();
+		util.p(util.t(50));
+		util.p(titulo);
+		util.p(util.t(50));
+		util.l();
+	}
+	
+	/**
+	 * Metodo que salva os dados necessarios para retornar a tela anterior
+	 * 
+	 * @param indice
+	 */
+	public static void voltarPag(int indice) {
+		int variavel = 1;
+
+		anterior = variavel;
+		variavel = indice;
+	}
+	
+	/**
+	 * Metodo que imprime as opcoes 'menu principal, 'voltar' e 'sair' em cada tela
+	 */
+	public static void opcoes(int indice) {
+		voltarPag(indice);
+		util.l();
+		util.p("[1] Menu Principal	[100] Voltar	[0] Sair");
+	}
+	
+	/**
+	 * Impressao do menu e das telas no console
 	 */
 	public static void menu(int indice){
 		util.p(util.t(50));
@@ -84,82 +119,91 @@ public class Principal {
 				util.p("[4] Jogadores");
 				util.l();
 				util.p("[0] Sair");
-			break;
+				break;
 			
 			case 2 :
-				pagina(indice);
+				cabecalhoTab("Campeonatos");
 				util.p("[5] Adicionar novo campeonato");
 				util.p("[6] Listar campeonatos");
-				voltarSair();
+				opcoes(indice);
 			break;
 			
 			case 3 :
-				pagina(indice);
-				util.p("[7] Cadastrar nova equipe");
-				util.p("[8] Visualizar equipes");
-				voltarSair();
+				cabecalhoTab("Equipes");
+				util.p("[7]  Cadastrar Nova Equipe");
+				util.p("[8]  Visualizar Todas as Equipes");
+				util.p("[9]  Editar Equipe Cadastrada");
+				util.p("[10] Deletar Equipe Cadastrada");
+				opcoes(indice);
 			break;
 			
 			case 4 :
-				pagina(indice);
-				util.p("[9] Cadastrar novo jogador");
-				util.p("[10] Visualizar jogadores");
-				voltarSair();
+				cabecalhoTab("Jogadores");
+				util.p("[11] Cadastrar novo jogador");
+				util.p("[12] Visualizar jogadores");
+				opcoes(indice);
 			break;
 			
 			case 5 :
-				pagina(indice);
-				util.p("Nome do Campeonato: "); 
-				teste = dados.nextLine(); 
-				dados.nextLine();
-				util.p("Data de inÌcio: ");     
-				teste = dados.nextLine(); 
-				util.p("Data de tÈrmino: ");    
-				teste = dados.nextLine();
-				dados.nextLine();
-				voltarSair();
+				cabecalhoTab("Cadastro de Campeonato");
+				camp.cadastrar();
+				opcoes(indice);
 			break;
 			
 			case 6 :
-				pagina(indice);
-				util.p("Campeonato	Data de inÌcio	Data de tÈrmino"); 
-				
-				//teste impressao
-				util.p("testeteste	testetesteteste	testetesteteste");
-				util.p("testeteste	testetesteteste	testetesteteste");
-				util.l();
+				cabecalhoTab("Listagem dos Campeonatos");
+				camp.listar();
 				
 				util.p(util.t(50));
-				voltarSair();
+				opcoes(indice);
 			break;	
 			
 			case 7 :
-				pagina(indice);
-				util.p("Nome da Equipe: "); 
-				teste = dados.nextLine();
-				dados.nextLine();
-				util.p("Apelido: ");        
-				teste = dados.nextLine();
-				util.p("Mascote: ");        
-				teste = dados.nextLine();
-				voltarSair();
+				cabecalhoTab("Cadastrar Nova Equipe");
+				equipe.cadastrar();
+				opcoes(indice);
 			break;	
 			
 			case 8 :
-				pagina(indice);
-				util.p("Equipe		Data de inÌcio	  Data de tÈrmino"); 
-				
-				//teste impressao
-				util.p("testeteste	testetesteteste	  testetesteteste");
-				util.p("testeteste	testetesteteste	  testetesteteste");
-				util.l();
+				cabecalhoTab("Listagem das Equipes Cadastradas");
+				equipe.listar();
 				
 				util.p(util.t(50));
-				voltarSair();
+				opcoes(indice);
 			break;	
 			
 			case 9 :
-				pagina(indice);
+				cabecalhoTab("Editar Equipe Cadastrada");
+				equipe.listar();
+				util.l();
+				util.p(util.t(50));
+				
+				int cod;
+				util.p("Informe o código da equipe:");
+				cod = dados.nextInt();
+				
+				equipe.alterar(cod);
+				util.p(util.t(50));
+				opcoes(indice);
+			break;	
+			
+			case 10 :
+				cabecalhoTab("Deletar Equipe Cadastrada");
+				equipe.listar();
+				util.l();
+				util.p(util.t(50));
+				
+				int cod2;
+				util.p("Informe o código da equipe:");
+				cod2 = dados.nextInt();
+				
+				equipe.deletar(cod2);
+				util.p(util.t(50));
+				opcoes(indice);
+			break;	
+			
+			case 11 :
+				cabecalhoTab("Cadastro de Jogador");
 				util.p("Nome do Jogador: ");    
 				teste = dados.nextLine();
 				dados.nextLine();
@@ -169,18 +213,19 @@ public class Principal {
 				teste = dados.nextLine();
 				util.p("Celular: ");            
 				teste = dados.nextLine();
-				voltarSair();
+				opcoes(indice);
 			break;
 			
-			case 10 :
-				pagina(indice);
+			case 12 :
+				cabecalhoTab("Visualizar jogadores");
+				
 				util.p("Jogador		CPF	Telefone fixo	Celular"); 
 				//teste impressao
 				util.p("testeteste	teste   testeteste 	testeteste");
 				util.p("testeteste	teste	testeteste	testeteste");
 				util.l();
 				
-				voltarSair();
+				opcoes(indice);
 			break;	
 			
 			case 100 :
@@ -202,58 +247,14 @@ public class Principal {
 	}
 	
 	/**
-	 * Imprime cabecalho do programa no console
-	 * @return null
+	 * Main
 	 */
-	public static void cabecalho(){
-		util.p(util.t(150));
-		util.p("FOOTMANAGER      v" + versao);
-		util.p(util.t(150));
-		util.l();
-	}
-	
-	
-	/**
-	 * Imprime cabecalho da tabela
-	 */
-	public static void cabecalhoTabela(int titulo){
-		String titulo2 = null;
-		
-		if(titulo == 2){ titulo2 = "Campeonatos";}
-		if(titulo == 3){titulo2 = "Equipes";}
-		if(titulo == 4){titulo2 = "Jogadores";}
-		if(titulo == 5){titulo2 = "Cadastro de Campeonato";}
-		if(titulo == 6){titulo2 = "Listagem dos Campeonatos";}
-		if(titulo == 7){titulo2 = "Cadastrar nova equipe";}
-		if(titulo == 8){titulo2 = "Listagem das Equipes Cadastradas";}
-		if(titulo == 9){titulo2 = "Cadastro de Jogador";}
-		if(titulo == 10){titulo2 = "Visualizar jogadores";}
-		
-		util.l();
-		util.p(util.t(50));
-		util.p(titulo2);
-		util.p(util.t(50));
-		util.l();
-	}
-	
-	/**
-	 * Salva os dados necessarios para acessar a tela que o usuario estava visualizando anteriormente
-	 * 
-	 * @param indice
-	 */
-	public static void pagina(int indice){
-		int variavel = 1;
-		
-		cabecalhoTabela(indice);
-		anterior = variavel;
-		variavel = indice;
-	}
-	
-	/**
-	 * Imprime as opcoes 'voltar' e 'sair' na tela
-	 */
-	public static void voltarSair(){
-		util.l();
-		util.p("[1] Menu Principal	[100] Voltar	[0] Sair");
+	public static void main(String[] args) {
+		try {
+			cabecalho();
+			menu(tela);
+		} catch( Exception e  ){
+			System.out.println("Erro: " + e.getMessage() );
+		}
 	}
 }

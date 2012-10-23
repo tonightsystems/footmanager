@@ -5,7 +5,7 @@ public class Utilitarios {
 	/**
 	 * Imprime nova linha com texto no console
 	 * 
-	 * @param string texto Texto a ser impresso. Obrigatorio.
+	 * @param string texto (Texto a ser impresso. Obrigatorio.)
 	 */
 	public void p(Object texto){
 		System.out.println(texto);
@@ -16,7 +16,7 @@ public class Utilitarios {
 	 * @param vezes
 	 * @return linha
 	 */
-	public static String t(int vezes){
+	public String t(int vezes){
 		String linha = "";
 		while( vezes > 0 ){
 			linha += "=";
@@ -33,7 +33,7 @@ public class Utilitarios {
 	}
 	
 	/**
-	 * Limpar a tela
+	 * Limpar a tela (NAO UTILIZADA AINDA - ALINE)
 	 */
 	public void cls(){
 		for(int i = 0; i < 15; i++)
