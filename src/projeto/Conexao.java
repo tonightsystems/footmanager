@@ -19,19 +19,23 @@ public class Conexao {
 	 */
 	Connection conn;
 	
-
+	/**
+	 * Efetua a conexao com o banco
+	 * 
+	 * @return null
+	 */
 	public Connection getConnection(){
 		try {
-			
-			Class.forName("com.mysql.jdbc.Driver"); //Carrega driver JDBC
-			connectionString = "jdbc:mysql://localhost/footmanager?user=root&password=root"; //String de conexao
-			conn = DriverManager.getConnection( connectionString ); //Faz a conexao entre o driver e a String
-			
+			//Carrega driver JDBC
+			Class.forName("com.mysql.jdbc.Driver");
+			//String de conexao
+			connectionString = "jdbc:mysql://localhost/footmanager?user=root&password=root";
+			//Faz a conexao entre o driver e a String
+			conn = DriverManager.getConnection( connectionString );
 		} catch (Exception e) {
-			
 			util.p("Erro:" + e.getMessage());
-			
 		}
+		
 		return null;
 	}
 }
