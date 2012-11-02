@@ -43,14 +43,16 @@ public class Principal {
 	 * 2 = Campeonatos
 	 * 3 = Equipes
 	 * 4 = Jogadores
-	 * 5 = Adicionar novo campeonato
-	 * 6 = Listar campeonatos
-	 * 7 = Cadastrar Nova Equipe
-	 * 8 = Visualizar Todas as Equipes
-	 * 9 = Editar Equipe Cadastrada
-	 * 10 = Deletar Equipe Cadastrada
-	 * 11 = Cadastrar novo jogador
-	 * 12 = Visualizar jogadores
+	 * 5 = Adicionar novo Campeonato
+	 * 6 = Visualizar Todos os Campeonatos
+	 * 7 = Editar Campeonato Cadastrado
+	 * 8 = Deletar Campeonato Cadastrado
+	 * 9 = Cadastrar Nova Equipe
+	 * 10 = Visualizar Todas as Equipes
+	 * 11 = Editar Equipe Cadastrada
+	 * 12 = Deletar Equipe Cadastrada
+	 * 13 = Cadastrar novo jogador
+	 * 14 = Visualizar jogadores
 	 * 15 = Voltar	 
 	 * 
 	 * @type {Number}
@@ -123,24 +125,26 @@ public class Principal {
 			
 			case 2 :
 				cabecalhoTab("Campeonatos");
-				util.p("[5] Adicionar novo campeonato");
-				util.p("[6] Listar campeonatos");
+				util.p("[5] Adicionar Novo Campeonato");
+				util.p("[6] Listar Campeonatos");
+				util.p("[7] Editar Campeonato Cadastrado");
+				util.p("[8] Deletar Campeonato Cadastrado");
 				opcoes(indice);
 			break;
 			
 			case 3 :
 				cabecalhoTab("Equipes");
-				util.p("[7]  Cadastrar Nova Equipe");
-				util.p("[8]  Visualizar Todas as Equipes");
-				util.p("[9]  Editar Equipe Cadastrada");
-				util.p("[10] Deletar Equipe Cadastrada");
+				util.p("[9]  Cadastrar Nova Equipe");
+				util.p("[10] Visualizar Todas as Equipes");
+				util.p("[11] Editar Equipe Cadastrada");
+				util.p("[12] Deletar Equipe Cadastrada");
 				opcoes(indice);
 			break;
 			
 			case 4 :
 				cabecalhoTab("Jogadores");
-				util.p("[11] Cadastrar novo jogador");
-				util.p("[12] Visualizar jogadores");
+				util.p("[13] Cadastrar Novo Jogador");
+				util.p("[14] Visualizar Jogadores");
 				opcoes(indice);
 			break;
 			
@@ -159,12 +163,42 @@ public class Principal {
 			break;	
 			
 			case 7 :
+				cabecalhoTab("Editar Campeonato Cadastrado");
+				camp.listar();
+				util.l();
+				util.p(util.t(50));
+				
+				int cod;
+				util.p("Informe o código do campeonato:");
+				cod = dados.nextInt();
+				
+				camp.alterar(cod);
+				util.p(util.t(50));
+				opcoes(indice);
+			break;		
+			
+			case 8 :
+				cabecalhoTab("Deletar Campeonato Cadastrado");
+				camp.listar();
+				util.l();
+				util.p(util.t(50));
+				
+				int cod2;
+				util.p("Informe o código do campeonato:");
+				cod2 = dados.nextInt();
+				
+				camp.deletar(cod2);
+				util.p(util.t(50));
+				opcoes(indice);
+			break;	
+			
+			case 9 :
 				cabecalhoTab("Cadastrar Nova Equipe");
 				equipe.cadastrar();
 				opcoes(indice);
 			break;	
 			
-			case 8 :
+			case 10 :
 				cabecalhoTab("Listagem das Equipes Cadastradas");
 				equipe.listar();
 				
@@ -172,37 +206,37 @@ public class Principal {
 				opcoes(indice);
 			break;	
 			
-			case 9 :
+			case 11 :
 				cabecalhoTab("Editar Equipe Cadastrada");
 				equipe.listar();
 				util.l();
 				util.p(util.t(50));
 				
-				int cod;
+				int cod3 = 0;
 				util.p("Informe o código da equipe:");
 				cod = dados.nextInt();
 				
-				equipe.alterar(cod);
+				equipe.alterar(cod3);
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
-			case 10 :
+			case 12 :
 				cabecalhoTab("Deletar Equipe Cadastrada");
 				equipe.listar();
 				util.l();
 				util.p(util.t(50));
 				
-				int cod2;
+				int cod4 = 0;
 				util.p("Informe o código da equipe:");
 				cod2 = dados.nextInt();
 				
-				equipe.deletar(cod2);
+				equipe.deletar(cod4);
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
-			case 11 :
+			case 13 :
 				cabecalhoTab("Cadastro de Jogador");
 				util.p("Nome do Jogador: ");    
 				teste = dados.nextLine();
@@ -216,7 +250,7 @@ public class Principal {
 				opcoes(indice);
 			break;
 			
-			case 12 :
+			case 14 :
 				cabecalhoTab("Visualizar jogadores");
 				
 				util.p("Jogador		CPF	Telefone fixo	Celular"); 
