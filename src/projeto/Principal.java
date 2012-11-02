@@ -53,7 +53,10 @@ public class Principal {
 	 * 12 = Deletar Equipe Cadastrada
 	 * 13 = Cadastrar novo jogador
 	 * 14 = Visualizar jogadores
-	 * 15 = Voltar	 
+	 * 15 = Editar Jogador Cadastrado
+	 * 16 = Deletar Jogador Cadastrado
+
+	 * 100 = Voltar
 	 * 
 	 * @type {Number}
 	 */
@@ -145,6 +148,8 @@ public class Principal {
 				cabecalhoTab("Jogadores");
 				util.p("[13] Cadastrar Novo Jogador");
 				util.p("[14] Visualizar Jogadores");
+				util.p("[15] Editar Jogador Cadastrado");
+				util.p("[16] Deletar Jogador Cadastrado");
 				opcoes(indice);
 			break;
 			
@@ -238,29 +243,49 @@ public class Principal {
 			
 			case 13 :
 				cabecalhoTab("Cadastro de Jogador");
-				util.p("Nome do Jogador: ");    
-				teste = dados.nextLine();
-				dados.nextLine();
-				util.p("CPF: ");                
-				teste = dados.nextLine();
-				util.p("Telefone fixo: ");      
-				teste = dados.nextLine();
-				util.p("Celular: ");            
-				teste = dados.nextLine();
+				//jogador.cadastrar();
 				opcoes(indice);
 			break;
 			
 			case 14 :
 				cabecalhoTab("Visualizar jogadores");
+				//jogador.listar();
 				
-				util.p("Jogador		CPF	Telefone fixo	Celular"); 
-				//teste impressao
-				util.p("testeteste	teste   testeteste 	testeteste");
-				util.p("testeteste	teste	testeteste	testeteste");
-				util.l();
-				
+				util.p(util.t(50));
 				opcoes(indice);
 			break;	
+			
+			case 15 :
+				cabecalhoTab("Editar Jogador Cadastrado");
+				//jogador.listar();
+				util.l();
+				util.p(util.t(50));
+				
+				//int cod3 = 0;
+				util.p("Informe o código da equipe:");
+				cod = dados.nextInt();
+				
+				//jogador.alterar(cod3);
+				util.p(util.t(50));
+				opcoes(indice);
+			break;	
+			
+			case 16 :
+				cabecalhoTab("Deletar Jogador Cadastrado");
+				//jogador.listar();
+				util.l();
+				util.p(util.t(50));
+				
+				//int cod4 = 0;
+				util.p("Informe o código da equipe:");
+				cod2 = dados.nextInt();
+				
+				//jogador.deletar(cod4);
+				util.p(util.t(50));
+				opcoes(indice);
+			break;	
+			
+			
 			
 			case 100 :
 				menu(anterior);
