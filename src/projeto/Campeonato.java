@@ -5,7 +5,7 @@ import java.util.Scanner;
 import projeto.Conexao;
 import projeto.Utilitarios;
 
-public class Campeonatos {
+public class Campeonato {
 		
 	/**
 	 * Recebe os dados informados pelo usuario
