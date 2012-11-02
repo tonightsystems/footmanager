@@ -40,24 +40,33 @@ public class Jogador {
 	public void cadastrar( ) {
 		try {
 			bd.getConnection();
-			String nome, apelido, mascote;
-			int cpf, celular, telefone, id_equipe, pendurado;
+			String nome;
+			int cpf, celular, telefone, id_equipe;
 			smt = bd.conn.createStatement();
 			
-			System.out.print("Nome da Equipe: "); 
+			System.out.print("Nome do jogador: "); 
 			nome = dados.nextLine();
 					
-			System.out.print("Apelido: ");    
-			apelido = dados.nextLine();
+			System.out.print("Cpf: ");    
+			cpf = dados.nextInt();
+			dados.nextLine();
 			
-			System.out.print("Mascote: ");
-			mascote = dados.nextLine();	
+			System.out.print("Celular: ");
+			celular = dados.nextInt();
 			
-			sql = "INSERT INTO jogadores(nome, apelido, mascote) " 
+			System.out.print("Telefone: ");
+			telefone = dados.nextInt();
+			
+			System.out.print("id_equipe: ");
+			id_equipe = dados.nextInt();		
+			
+			sql = "INSERT INTO jogadores(nome, cpf, celular, telefone, id_equipe) " 
 					+ "values( "
 					+ "'" + nome + "', " 
-					+ "'" + apelido + "', " 
-					+ "'" + mascote + "')";
+					+ "'" + cpf + "', " 
+					+ "'" + celular + "', " 
+					+ "'" + telefone + "', " 
+					+ "'" + id_equipe + "')";
 			
 			smt.execute(sql);
 			bd.conn.close();
@@ -75,18 +84,19 @@ public class Jogador {
 	public void alterar(int id) {
 		try {
 			bd.getConnection();
-			String nome, apelido;
-			int cpf, celular, telefone, id_equipe, pendurado;
+			String nome;
+			int cpf, celular, telefone, id_equipe;
 			smt = bd.conn.createStatement();
 			
-			System.out.print("Nome da Equipe: "); 
+			dados.nextLine();
+			System.out.print("Nome do jogador: "); 
 			nome = dados.nextLine();
 					
 			System.out.print("Cpf: ");    
 			cpf = dados.nextInt();
-			
+		
 			System.out.print("Celular: ");
-			celular = dados.nextInt();	
+			celular = dados.nextInt();
 			
 			System.out.print("Telefone: ");
 			telefone = dados.nextInt();	
@@ -94,17 +104,12 @@ public class Jogador {
 			System.out.print("Em qual equipe irá adicioná-lo: ");
 			id_equipe = dados.nextInt();
 			
-			System.out.print("Pendurado: ");
-			pendurado = dados.nextInt();	
-			
-			
 			sql = "UPDATE jogadores set " 
 				+ "nome= '" + nome + "' , " 
 				+ "cpf= '" + cpf + "' , " 
-				+ "celular= '" + celular + "' "
+				+ "celular= '" + celular + "' ,"
 				+ "telefone= '" + telefone + "' , " 
-				+ "id_equipe= '" + id_equipe + "' , " 
-				+ "pendurado= '" + pendurado + "' , " 
+				+ "id_equipe= '" + id_equipe + "' " 
 				+ "where id=" + id;
 			
 			smt.execute(sql);
@@ -143,7 +148,7 @@ public class Jogador {
 	}
 	
 	/**
-	 * Deletar equipe cadastrada
+	 * Deletar jogador cadastrado
 	 */
 	public void deletar(int id) {
 		try {
@@ -151,7 +156,7 @@ public class Jogador {
 			smt = bd.conn.createStatement();
 			
 			sql = "delete from jogadores " 
-					+ "where id = " + id;
+				+ "where id = " + id;
 			
 			smt.execute(sql);
 			bd.conn.close();

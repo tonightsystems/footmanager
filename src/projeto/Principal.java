@@ -23,6 +23,11 @@ public class Principal {
 	public static Equipe equipe = new Equipe();
 	
 	/**
+	 * Objeto Jogadores
+	 */
+	public static Jogador jogador = new Jogador();
+	
+	/**
 	 * Objeto Conexao
 	 */
 	public static Conexao bd = new Conexao();
@@ -219,7 +224,7 @@ public class Principal {
 				
 				int cod3 = 0;
 				util.p("Informe o código da equipe:");
-				cod = dados.nextInt();
+				cod3 = dados.nextInt();
 				
 				equipe.alterar(cod3);
 				util.p(util.t(50));
@@ -234,7 +239,7 @@ public class Principal {
 				
 				int cod4 = 0;
 				util.p("Informe o código da equipe:");
-				cod2 = dados.nextInt();
+				cod4 = dados.nextInt();
 				
 				equipe.deletar(cod4);
 				util.p(util.t(50));
@@ -243,13 +248,13 @@ public class Principal {
 			
 			case 13 :
 				cabecalhoTab("Cadastro de Jogador");
-				//jogador.cadastrar();
+				jogador.cadastrar();
 				opcoes(indice);
 			break;
 			
 			case 14 :
-				cabecalhoTab("Visualizar jogadores");
-				//jogador.listar();
+				cabecalhoTab("Visualizar Jogadores");
+				jogador.listar();
 				
 				util.p(util.t(50));
 				opcoes(indice);
@@ -257,30 +262,30 @@ public class Principal {
 			
 			case 15 :
 				cabecalhoTab("Editar Jogador Cadastrado");
-				//jogador.listar();
+				jogador.listar();
 				util.l();
 				util.p(util.t(50));
 				
-				//int cod3 = 0;
+				int cod5 = 0;
 				util.p("Informe o código da equipe:");
-				cod = dados.nextInt();
+				cod5 = dados.nextInt();
 				
-				//jogador.alterar(cod3);
+				jogador.alterar(cod5);
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
 			case 16 :
 				cabecalhoTab("Deletar Jogador Cadastrado");
-				//jogador.listar();
+				jogador.listar();
 				util.l();
 				util.p(util.t(50));
 				
-				//int cod4 = 0;
+				int cod6 = 0;
 				util.p("Informe o código da equipe:");
-				cod2 = dados.nextInt();
+				cod6 = dados.nextInt();
 				
-				//jogador.deletar(cod4);
+				jogador.deletar(cod6);
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -297,7 +302,7 @@ public class Principal {
 		}
 		util.p(util.t(50));
 		util.l();
-		if ( indice > 0 && indice < 11 ){
+		if ( indice > 0 && indice < 30 ){
 			util.p("Escolha: ");
 			tela = dados.nextInt();
 			menu(tela);
