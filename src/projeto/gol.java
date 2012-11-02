@@ -5,14 +5,15 @@ import java.sql.Statement;
 import java.util.Scanner;
 import projeto.Conexao;
 import projeto.Utilitarios;
+import projeto.Equipe;
 
-public class gol {
+public class Gol {
 	
 	/**
 	 * Recebe os dados informados pelo usuario
 	 * @type {Scanner}
 	 */
-	Scanner dados = new Scanner(System.in);
+	static Scanner dados = new Scanner(System.in);
 	
 	/**
 	 * Objeto Conexao
@@ -42,24 +43,27 @@ public class gol {
 	/**
 	 * MŽtodo para cadastrar novo gol	
 	 */
-	public void cadastrar() {
+	public static void cadastrar() {
 		try {
 			bd.getConnection();
-			String jogador, equipe, contra;
+			int jogador, time;
+			String contra;
 			smt = bd.conn.createStatement();
 			
 			util.p("Qual equipe fez o gol?");
-			equipe = dados.nextLine();
+			equipe.listar();
+			time = dados.nextInt();
+			dados.nextLine();
 			
 			util.p("O gol foi contra(s ou n)?");
 			contra = dados.nextLine();
 			
 			util.p("Qual jogador fez o gol?");
-			jogador = dados.nextLine();
+			jogador = dados.nextInt();
 			
 			sql = "INSERT INTO gols(equipe, contra, jogador) " 
 					+ "values( "
-					+ "'" + equipe + "', " 
+					+ "'" + time + "', " 
 					+ "'" + contra + "', " 
 					+ "'" + jogador + "')";
 			
@@ -76,20 +80,22 @@ public class gol {
 	public void editar(int id) {
 		try {
 			bd.getConnection();
-			String jogador, equipe, contra;
+			int jogador, time;
+			String contra;
 			smt = bd.conn.createStatement();
 			
 			util.p("Qual equipe fez o gol?");
-			equipe = dados.nextLine();
+			time = dados.nextInt();
+			dados.nextLine();
 			
 			util.p("O gol foi contra(s ou n)?");
 			contra = dados.nextLine();
 			
 			util.p("Qual jogador fez o gol?");
-			jogador = dados.nextLine();
+			jogador = dados.nextInt();
 			
 			sql = "UPIDATE gols set"
-			+ "equipe= '" + equipe + "' , " 
+			+ "equipe= '" + time + "' , " 
 			+ "contra= '" + contra + "' , " 
 			+ "jogador= '" + jogador + "' "
 			+ "where id=" + id;
