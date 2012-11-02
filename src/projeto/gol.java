@@ -25,6 +25,11 @@ public class gol {
 	public static Utilitarios util = new Utilitarios();
 	
 	/**
+	 * Objeto Equipe
+	 */
+	public static Equipe equipe = new Equipe();
+	
+	/**
 	 * Statement
 	 */
 	private static Statement smt;
@@ -34,7 +39,9 @@ public class gol {
 	 */
 	private static String sql = "";
 	
-
+	/**
+	 * Cadastrar novo gol	
+	 */
 	public static void main(String[] args) {
 		
 	}
