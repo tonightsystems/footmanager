@@ -27,7 +27,7 @@ public class Principal {
 	 */
 	public static Conexao bd = new Conexao();
 	
-	public static Campeonatos camp = new Campeonatos();
+	public static Campeonato camp = new Campeonato();
 	
 	/**
 	 * Declaracao Variaveis
