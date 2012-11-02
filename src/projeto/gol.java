@@ -40,7 +40,7 @@ public class gol {
 	private static String sql = "";
 	
 	/**
-	 * Cria o método para cadastrar novo gol	
+	 * Método para cadastrar novo gol	
 	 */
 	public void cadastrar() {
 		try {
@@ -71,7 +71,7 @@ public class gol {
 	}
 	
 	/**
-	 * Cria o método para editar os gols cadastrados
+	 * Método para editar os gols cadastrados
 	 */
 	public void editar(int id) {
 		try {
@@ -102,8 +102,22 @@ public class gol {
 		}
 	}
 	
-	public static void main(String[] args) {
-		
+	/**
+	 * Método para deletar gols
+	 */
+	public void deletar(int id) {
+		try {
+			bd.getConnection();
+			smt = bd.conn.createStatement();
+			
+			sql = "delete from gols " 
+					+ "where id = " + id;
+			
+			smt.execute(sql);
+			bd.conn.close();
+			
+		} catch (Exception e) {	
+				util.p("Erro: " + e.getMessage());
+		}
 	}
-
 }
