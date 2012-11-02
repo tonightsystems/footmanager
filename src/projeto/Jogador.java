@@ -40,24 +40,33 @@ public class Jogador {
 	public void cadastrar( ) {
 		try {
 			bd.getConnection();
-			String nome, apelido, mascote;
-			int cpf, celular, telefone, id_equipe, pendurado;
+			String nome;
+			int cpf = 0, celular, telefone, id_equipe, pendurado;
 			smt = bd.conn.createStatement();
 			
 			System.out.print("Nome da Equipe: "); 
 			nome = dados.nextLine();
 					
-			System.out.print("Apelido: ");    
-			apelido = dados.nextLine();
+			System.out.print("Celular: ");    
+			celular = dados.nextInt();
 			
-			System.out.print("Mascote: ");
-			mascote = dados.nextLine();	
+			System.out.print("telefone: ");
+			telefone = dados.nextInt();	
 			
-			sql = "INSERT INTO jogadores(nome, apelido, mascote) " 
+			System.out.print("Em qual equipe irá adicioná-lo: ");
+			id_equipe = dados.nextInt();
+			
+			System.out.print("Pendurado: ");
+			pendurado = dados.nextInt();
+			
+			sql = "INSERT INTO jogadores(nome, cpf, celular, telefone, id_equipe) " 
 					+ "values( "
 					+ "'" + nome + "', " 
-					+ "'" + apelido + "', " 
-					+ "'" + mascote + "')";
+					+ "'" + cpf + "', "
+					+ "'" + celular + "', " 
+					+ "'" + telefone + "', " 
+					+ "'" + id_equipe+ "', " 
+					+ "'" + pendurado + "')";
 			
 			smt.execute(sql);
 			bd.conn.close();
@@ -75,7 +84,7 @@ public class Jogador {
 	public void alterar(int id) {
 		try {
 			bd.getConnection();
-			String nome, apelido;
+			String nome;
 			int cpf, celular, telefone, id_equipe, pendurado;
 			smt = bd.conn.createStatement();
 			
