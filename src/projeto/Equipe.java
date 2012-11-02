@@ -43,13 +43,13 @@ public class Equipe {
 			String nome, apelido, mascote;
 			smt = bd.conn.createStatement();
 			
-			System.out.print("Nome da Equipe: "); 
+			util.p("Nome da Equipe: "); 
 			nome = dados.nextLine();
 					
-			System.out.print("Apelido: ");    
+			util.p("Apelido: ");    
 			apelido = dados.nextLine();
 			
-			System.out.print("Mascote: ");
+			util.p("Mascote: ");
 			mascote = dados.nextLine();	
 			
 			sql = "INSERT INTO equipes(nome, apelido, mascote) " 
