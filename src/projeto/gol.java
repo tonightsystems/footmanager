@@ -40,7 +40,7 @@ public class gol {
 	private static String sql = "";
 	
 	/**
-	 * Cadastrar novo gol	
+	 * Cria o método para cadastrar novo gol	
 	 */
 	public void cadastrar() {
 		try {
@@ -68,7 +68,40 @@ public class gol {
 		} catch (Exception e) {
 			util.p("Erro: " + e.getMessage());			
 		}
-	} 
+	}
+	
+	/**
+	 * Cria o método para editar os gols cadastrados
+	 */
+	public void editar(int id) {
+		try {
+			bd.getConnection();
+			String jogador, equipe, contra;
+			smt = bd.conn.createStatement();
+			
+			util.p("Qual equipe fez o gol?");
+			equipe = dados.nextLine();
+			
+			util.p("O gol foi contra(s ou n)?");
+			contra = dados.nextLine();
+			
+			util.p("Qual jogador fez o gol?");
+			jogador = dados.nextLine();
+			
+			sql = "UPIDATE gols set"
+			+ "equipe= '" + equipe + "' , " 
+			+ "contra= '" + contra + "' , " 
+			+ "jogador= '" + jogador + "' "
+			+ "where id=" + id;
+			
+			smt.execute(sql);
+			bd.conn.close();
+			
+		} catch (Exception e) {
+			util.p("Erro: " + e.getMessage());
+		}
+	}
+	
 	public static void main(String[] args) {
 		
 	}
