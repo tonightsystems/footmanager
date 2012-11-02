@@ -61,9 +61,7 @@ public class Campeonatos {
 			bd.conn.close();
 			
 		} catch (Exception e) {
-			
 			util.p("Erro: " + e.getMessage());
-			
 		}
 	}
 
