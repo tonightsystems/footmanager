@@ -3,12 +3,21 @@ package projeto;
 public class Utilitarios {
 
 	/**
-	 * Imprime nova linha com texto no console
+	 * Imprime nova linha com texto no console com a quebra de linha
 	 * 
 	 * @param string texto (Texto a ser impresso. Obrigatorio.)
 	 */
 	public void p(Object texto){
 		System.out.println(texto);
+	}
+	
+	/**
+	 * Imprime nova linha com texto no console 
+	 * 
+	 * @param string texto (Texto a ser impresso. Obrigatorio.)
+	 */
+	public void p2(Object texto){
+		System.out.print(texto);
 	}
 	
 	/**
