@@ -297,7 +297,7 @@ public class Principal {
 		}
 		util.p(util.t(50));
 		util.l();
-		if ( indice > 0 && indice < 11 ){
+		if ( indice > 0 && indice < 30 ){
 			util.p("Escolha: ");
 			tela = dados.nextInt();
 			menu(tela);
