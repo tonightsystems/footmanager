@@ -119,8 +119,8 @@ public class Campeonato {
 				bd.conn.close();
 			}
 			catch( Exception erro  ){
-				System.out.println("Um erro aconteceu.");
-				System.out.println("Descricao: " + erro.getMessage() );
+				util.p("Um erro aconteceu.");
+				util.p("Descricao: " + erro.getMessage() );
 			}
 	}
 	

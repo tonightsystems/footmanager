@@ -27,6 +27,9 @@ public class Principal {
 	 */
 	public static Conexao bd = new Conexao();
 	
+	/**
+	 * Objeto Campeonato
+	 */
 	public static Campeonato camp = new Campeonato();
 	
 	/**
@@ -34,6 +37,7 @@ public class Principal {
 	 */
 	public static String teste;
 	public static int anterior = 0;
+	public static int cod;
 
 	/**
 	 * Guarda a tela acessada no momento:
@@ -162,8 +166,6 @@ public class Principal {
 			case 6 :
 				cabecalhoTab("Listagem dos Campeonatos");
 				camp.listar();
-				
-				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
@@ -173,11 +175,12 @@ public class Principal {
 				util.l();
 				util.p(util.t(50));
 				
-				int cod;
-				util.p("Informe o código do campeonato:");
+				util.p2("Informe o código do campeonato a ser editado: ");
 				cod = dados.nextInt();
-				
+				util.p(util.t(50));
+				util.l();
 				camp.alterar(cod);
+				util.l();
 				util.p(util.t(50));
 				opcoes(indice);
 			break;		
@@ -188,11 +191,10 @@ public class Principal {
 				util.l();
 				util.p(util.t(50));
 				
-				int cod2;
-				util.p("Informe o código do campeonato:");
-				cod2 = dados.nextInt();
+				util.p2("Informe o código do campeonato a ser deletado: ");
+				cod = dados.nextInt();
 				
-				camp.deletar(cod2);
+				camp.deletar(cod);
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -206,8 +208,6 @@ public class Principal {
 			case 10 :
 				cabecalhoTab("Listagem das Equipes Cadastradas");
 				equipe.listar();
-				
-				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
@@ -217,11 +217,13 @@ public class Principal {
 				util.l();
 				util.p(util.t(50));
 				
-				int cod3 = 0;
-				util.p("Informe o código da equipe:");
+				util.p("Informe o código da equipe a ser editada: ");
 				cod = dados.nextInt();
 				
-				equipe.alterar(cod3);
+				util.p(util.t(50));
+				util.l();
+				equipe.alterar(cod);
+				util.l();
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -231,12 +233,11 @@ public class Principal {
 				equipe.listar();
 				util.l();
 				util.p(util.t(50));
+
+				util.p("Informe o código da equipe a ser deletada: ");
+				cod = dados.nextInt();
 				
-				int cod4 = 0;
-				util.p("Informe o código da equipe:");
-				cod2 = dados.nextInt();
-				
-				equipe.deletar(cod4);
+				equipe.deletar(cod);
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -250,8 +251,6 @@ public class Principal {
 			case 14 :
 				cabecalhoTab("Visualizar jogadores");
 				//jogador.listar();
-				
-				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
@@ -261,11 +260,14 @@ public class Principal {
 				util.l();
 				util.p(util.t(50));
 				
-				//int cod3 = 0;
-				util.p("Informe o código da equipe:");
+				util.p("Informe o código do jogador a ser editado: ");
 				cod = dados.nextInt();
 				
-				//jogador.alterar(cod3);
+				cod = dados.nextInt();
+				util.p(util.t(50));
+				util.l();
+				//jogador.alterar(cod);
+				util.l();
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -276,11 +278,10 @@ public class Principal {
 				util.l();
 				util.p(util.t(50));
 				
-				//int cod4 = 0;
-				util.p("Informe o código da equipe:");
-				cod2 = dados.nextInt();
+				util.p("Informe o código do jogador a ser deletado: ");
+				cod = dados.nextInt();
 				
-				//jogador.deletar(cod4);
+				//jogador.deletar(cod);
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -298,7 +299,7 @@ public class Principal {
 		util.p(util.t(50));
 		util.l();
 		if ( indice > 0 && indice < 30 ){
-			util.p("Escolha: ");
+			util.p2("Escolha: ");
 			tela = dados.nextInt();
 			menu(tela);
 		}
