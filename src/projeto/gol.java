@@ -41,7 +41,7 @@ public class Gol {
 	private static String sql = "";
 	
 	/**
-	 * MŽtodo para cadastrar novo gol	
+	 * Metodo para cadastrar novo gol	
 	 */
 	public static void cadastrar() {
 		try {
@@ -75,7 +75,7 @@ public class Gol {
 	}
 	
 	/**
-	 * MŽtodo para editar os gols cadastrados
+	 * Metodo para editar os gols cadastrados
 	 */
 	public void editar(int id) {
 		try {
@@ -94,7 +94,7 @@ public class Gol {
 			util.p("Qual jogador fez o gol?");
 			jogador = dados.nextInt();
 			
-			sql = "UPIDATE gols set"
+			sql = "UPDATE gols set"
 			+ "equipe= '" + time + "' , " 
 			+ "contra= '" + contra + "' , " 
 			+ "jogador= '" + jogador + "' "
@@ -109,7 +109,32 @@ public class Gol {
 	}
 	
 	/**
-	 * MŽtodo para deletar gols
+	 * Listar gols cadastrados
+	 */
+	public void listar( ) {
+		try {
+			bd.getConnection();
+			smt = bd.conn.createStatement(); 
+			ResultSet rs; 
+			String sql = "select * from gols";
+			
+			rs = smt.executeQuery(sql); 
+			
+			while( rs.next() == true ){
+				  util.p( rs.getInt(1) + "    " + rs.getInt(2) + "    " + rs.getString(3)+ "    " + rs.getInt(4)); 
+				}
+				rs.close();
+				smt.close();
+				bd.conn.close();
+			}
+			catch( Exception erro  ){
+				util.p("Um erro aconteceu.");
+				util.p("Descricao: " + erro.getMessage() );
+			}
+	}
+	
+	/**
+	 * Metodo para deletar gols
 	 */
 	public void deletar(int id) {
 		try {
