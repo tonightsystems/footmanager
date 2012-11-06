@@ -22,7 +22,18 @@ public class Partida {
 	 * Objeto Utilitarios
 	 */
 	public static Utilitarios util = new Utilitarios();
+	
+	/**
+	 * Objeto Campeonato
+	 */
+	public static Campeonato camp = new Campeonato();
 
+	/**
+	 * Objeto Equipe
+	 */
+	public static Equipe equipe = new Equipe();
+
+	
 	/**
 	 * Statement
 	 */
@@ -39,21 +50,37 @@ public class Partida {
 	public void cadastrar() {
 		try {
 			bd.getConnection();
-			String nome, apelido, mascote;
+			
+			int id_camp, equipe1, equipe2;
+			String dt_hra, local;
 			smt = bd.conn.createStatement();
 
-			System.out.print("Nome da Equipe: ");
-			nome = dados.nextLine();
+			camp.listar();
+			util.p2("Informe o código do campeonato: ");
+			id_camp = dados.nextInt();
+			dados.nextInt();
+			
+			equipe.listar();
+			util.p("Informe o código da 1° Equipe: ");
+			equipe1 = dados.nextInt();
+			dados.nextInt();
+			
+			util.p("Informe o código da 2° Equipe: ");
+			equipe2 = dados.nextInt();
+			dados.nextInt();
 
-			System.out.print("Apelido: ");
-			apelido = dados.nextLine();
+			util.p("Informe a data e a hora da Partida: ");
+			dt_hra = dados.nextLine();
+			
+			util.p("Informe o local da Partida: ");
+			local = dados.nextLine();		
 
-			System.out.print("Mascote: ");
-			mascote = dados.nextLine();
-
-			sql = "INSERT INTO equipes(nome, apelido, mascote) " + "values( "
-					+ "'" + nome + "', " + "'" + apelido + "', " + "'"
-					+ mascote + "')";
+			sql = "INSERT INTO partidas(id_campeonato, id_equipe_1, id_equipe_2, data_e_hora, local) " + "values( "
+					+ "'" + id_camp + "', " 
+					+ "'" + equipe1 + "', " 
+					+ "'" + equipe2 + "', " 
+					+ "'" + dt_hra + "', " 
+					+ "'" + local + "')";
 
 			smt.execute(sql);
 			bd.conn.close();
@@ -71,20 +98,37 @@ public class Partida {
 	public void alterar(int id) {
 		try {
 			bd.getConnection();
-			String nome, apelido, mascote;
+			
+			int id_camp, equipe1, equipe2;
+			String dt_hra, local;
 			smt = bd.conn.createStatement();
 
-			System.out.print("Nome da Equipe: ");
-			nome = dados.nextLine();
+			camp.listar();
+			util.p2("Informe o código do campeonato: ");
+			id_camp = dados.nextInt();
+			dados.nextInt();
+			
+			equipe.listar();
+			util.p("Informe o código da 1° Equipe: ");
+			equipe1 = dados.nextInt();
+			dados.nextInt();
+			
+			util.p("Informe o código da 2° Equipe: ");
+			equipe2 = dados.nextInt();
+			dados.nextInt();
 
-			System.out.print("Apelido: ");
-			apelido = dados.nextLine();
-
-			System.out.print("Mascote: ");
-			mascote = dados.nextLine();
-
-			sql = "UPDATE equipes set " + "nome= '" + nome + "' , "
-					+ "apelido= '" + apelido + "' , " + "mascote= '" + mascote
+			util.p("Informe a data e a hora da Partida: ");
+			dt_hra = dados.nextLine();
+			
+			util.p("Informe o local da Partida: ");
+			local = dados.nextLine();
+			
+			sql = "UPDATE partidas set " 
+					+ "id_campeonato= '" + id_camp + "' , "
+					+ "id_equipe_1= '" + equipe1 + "' , " 
+					+ "id_equipe_2= '" + equipe2 + "' , " 
+					+ "data_e_hora= '" + dt_hra + "' , " 
+					+ "local= '" + local			
 					+ "' " + "where id=" + id;
 
 			smt.execute(sql);
@@ -103,26 +147,30 @@ public class Partida {
 	public void listar() {
 		try {
 			bd.getConnection();
-			smt = bd.conn.createStatement(); // createStatement() - Retorna um
-												// objeto que representa uma
-												// query ou comando
-			ResultSet rs; // Contem o resultado da Query
-			String sql = "select * from equipes";
+			smt = bd.conn.createStatement();
+			ResultSet rs; 
+			String sql = "select * from partidas";
 
-			rs = smt.executeQuery(sql); // Executa a Query
-
+			rs = smt.executeQuery(sql); 
+			
 			while (rs.next() == true) {
-				System.out.println(rs.getInt(1) + "    " + rs.getString(2)
-						+ "    " + rs.getString(3) + "    " + rs.getString(4)); // get
-																				// -
-																				// pegar/usar
+				util.p(rs.getInt(1) 
+						+ "    " + rs.getInt(2)
+						+ "    " + rs.getInt(3) 
+						+ "    " + rs.getInt(4)
+						+ "    " + rs.getString(5)
+						+ "    " + rs.getString(6)); 
 			}
+			
 			rs.close();
 			smt.close();
 			bd.conn.close();
+			
 		} catch (Exception erro) {
-			System.out.println("Um erro aconteceu.");
-			System.out.println("Descricao: " + erro.getMessage());
+			
+			util.p("Um erro aconteceu.");
+			util.p("Descricao: " + erro.getMessage());
+			
 		}
 	}
 
@@ -134,7 +182,7 @@ public class Partida {
 			bd.getConnection();
 			smt = bd.conn.createStatement();
 
-			sql = "delete from equipes " + "where id = " + id;
+			sql = "delete from partidas " + "where id = " + id;
 
 			smt.execute(sql);
 			bd.conn.close();
