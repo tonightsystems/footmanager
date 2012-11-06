@@ -8,6 +8,8 @@ import projeto.Utilitarios;
 
 public class Jogador {
 
+	private static final Object[] String = null;
+
 	/**
 	 * Recebe os dados informados pelo usuario
 	 * @type {Scanner}
@@ -40,17 +42,16 @@ public class Jogador {
 	public void cadastrar( ) {
 		try {
 			bd.getConnection();
-			String nome;
-			int cpf, celular, telefone, id_equipe;
+			String nome, cpf;
+			int celular, telefone, id_equipe;
 			smt = bd.conn.createStatement();
 			
 			System.out.print("Nome do jogador: "); 
 			nome = dados.nextLine();
 					
 			System.out.print("Cpf: ");    
-			cpf = dados.nextInt();
-			dados.nextLine();
-			
+			cpf = dados.nextLine();
+						
 			System.out.print("Celular: ");
 			celular = dados.nextInt();
 			
@@ -58,7 +59,8 @@ public class Jogador {
 			telefone = dados.nextInt();
 			
 			System.out.print("id_equipe: ");
-			id_equipe = dados.nextInt();		
+			id_equipe = dados.nextInt();
+			dados.nextLine();
 			
 			sql = "INSERT INTO jogadores(nome, cpf, celular, telefone, id_equipe) " 
 					+ "values( "
@@ -130,7 +132,7 @@ public class Jogador {
 			bd.getConnection();
 			smt = bd.conn.createStatement(); //createStatement() - Retorna um objeto que representa uma query ou comando
 			ResultSet rs; //Contem o resultado da Query
-			String sql = "select * from jogadores";
+			String sql = "select * from jogadores order by nome";
 			
 			rs = smt.executeQuery(sql); //Executa a Query
 			
