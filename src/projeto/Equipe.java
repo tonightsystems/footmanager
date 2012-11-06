@@ -110,7 +110,7 @@ public class Equipe {
 			bd.getConnection();
 			smt = bd.conn.createStatement(); //createStatement() - Retorna um objeto que representa uma query ou comando
 			ResultSet rs; //Contem o resultado da Query
-			String sql = "select * from equipes";
+			String sql = "select * from equipes order by nome";
 			
 			rs = smt.executeQuery(sql); //Executa a Query
 			
