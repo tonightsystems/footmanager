@@ -58,6 +58,10 @@ public class Campeonato {
 					+ "'" + data_termino + "')";
 			
 			smt.execute(sql);
+			
+			util.l();
+			util.p("Campeonato inserido com sucesso!");
+			
 			bd.conn.close();
 			
 		} catch (Exception e) {
@@ -90,6 +94,10 @@ public class Campeonato {
 				+ "where id=" + id;
 			
 			smt.execute(sql);
+			
+			util.l();
+			util.p("Campeonato alterado com sucesso!");
+			
 			bd.conn.close();
 			
 		} catch (Exception e) {

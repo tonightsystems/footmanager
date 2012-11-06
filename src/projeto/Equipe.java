@@ -59,6 +59,10 @@ public class Equipe {
 					+ "'" + mascote + "')";
 			
 			smt.execute(sql);
+			
+			util.l();
+			util.p("Equipe inserida com sucesso!");
+			
 			bd.conn.close();
 			
 		} catch (Exception e) {
@@ -93,6 +97,10 @@ public class Equipe {
 				+ "where id=" + id;
 			
 			smt.execute(sql);
+			
+			util.l();
+			util.p("Equipe alterada com sucesso!");
+			
 			bd.conn.close();
 			
 		} catch (Exception e) {
