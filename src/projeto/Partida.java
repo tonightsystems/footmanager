@@ -33,7 +33,6 @@ public class Partida {
 	 */
 	public static Equipe equipe = new Equipe();
 
-	
 	/**
 	 * Statement
 	 */
@@ -44,38 +43,76 @@ public class Partida {
 	 */
 	private static String sql = "";
 
+/*	public void teste(){
+		
+		int id_camp, equipe1, equipe2;
+		
+		util.p("Campeonatos Existentes: ");
+		util.l();
+		camp.listar();
+		util.l();
+		util.p2("Informe o código do campeonato: ");
+		id_camp = dados.nextInt();
+		dados.nextLine();
+		util.p(util.t(50));
+		util.l();
+		
+		util.p("Equipes Existentes: ");
+		util.l();
+		equipe.listar();
+		util.l();
+		util.p2("Informe o código da 1° Equipe: ");
+		equipe1 = dados.nextInt();
+		dados.nextLine();
+		util.p2("Informe o código da 2° Equipe: ");
+		equipe2 = dados.nextInt();
+		dados.nextLine();
+		util.p(util.t(50));
+	}*/
+	
 	/**
 	 * Cadastrar nova partida
 	 */
-	public void cadastrar() {
+	public void cadastrar(int id_camp) {
 		try {
 			bd.getConnection();
 			
-			int id_camp, equipe1, equipe2;
+			//teste();
+			
+			int equipe1 = 0, equipe2 = 0;
 			String dt_hra, local;
 			smt = bd.conn.createStatement();
-
+			
+/*			util.p("Campeonatos Existentes: ");
+			util.l();
 			camp.listar();
+			util.l();
 			util.p2("Informe o código do campeonato: ");
 			id_camp = dados.nextInt();
-			dados.nextInt();
-			
+			dados.nextLine();
+			util.p(util.t(50));
+			util.l();
+			*/
+			util.p("Equipes Existentes: ");
+			util.l();
 			equipe.listar();
-			util.p("Informe o código da 1° Equipe: ");
+			util.l();
+			util.p2("Informe o código da 1° Equipe: ");
 			equipe1 = dados.nextInt();
-			dados.nextInt();
-			
-			util.p("Informe o código da 2° Equipe: ");
+			dados.nextLine();
+			util.p2("Informe o código da 2° Equipe: ");
 			equipe2 = dados.nextInt();
-			dados.nextInt();
-
-			util.p("Informe a data e a hora da Partida: ");
+			dados.nextLine();
+			util.p(util.t(50));
+			
+			util.p2("Informe a data e a hora da Partida: ");
 			dt_hra = dados.nextLine();
 			
-			util.p("Informe o local da Partida: ");
+			util.p2("Informe o local da Partida: ");
 			local = dados.nextLine();		
 
-			sql = "INSERT INTO partidas(id_campeonato, id_equipe_1, id_equipe_2, data_e_hora, local) " + "values( "
+			sql = "INSERT INTO partidas(id_campeonato, id_equipe_1, id_equipe_2, data_e_hora, local) " 
+				+ "values( "
 					+ "'" + id_camp + "', " 
 					+ "'" + equipe1 + "', " 
 					+ "'" + equipe2 + "', " 
@@ -95,32 +132,32 @@ public class Partida {
 	/**
 	 * Alterar dados da partida
 	 */
-	public void alterar(int id) {
+	public void alterar(int id_camp) {
 		try {
 			bd.getConnection();
 			
-			int id_camp, equipe1, equipe2;
+			int equipe1, equipe2;
 			String dt_hra, local;
 			smt = bd.conn.createStatement();
-
-			camp.listar();
-			util.p2("Informe o código do campeonato: ");
-			id_camp = dados.nextInt();
-			dados.nextInt();
 			
+			util.p("Equipes Cadastradas: ");
+			util.l();
 			equipe.listar();
-			util.p("Informe o código da 1° Equipe: ");
+			util.l();
+			util.p(util.t(50));
+			util.l();
+			util.p2("Informe o código da 1° Equipe: ");
 			equipe1 = dados.nextInt();
-			dados.nextInt();
+			dados.nextLine();
 			
-			util.p("Informe o código da 2° Equipe: ");
+			util.p2("Informe o código da 2° Equipe: ");
 			equipe2 = dados.nextInt();
-			dados.nextInt();
+			dados.nextLine();
 
-			util.p("Informe a data e a hora da Partida: ");
+			util.p2("Informe a data e a hora da Partida: ");
 			dt_hra = dados.nextLine();
 			
-			util.p("Informe o local da Partida: ");
+			util.p2("Informe o local da Partida: ");
 			local = dados.nextLine();
 			
 			sql = "UPDATE partidas set " 
@@ -129,7 +166,7 @@ public class Partida {
 					+ "id_equipe_2= '" + equipe2 + "' , " 
 					+ "data_e_hora= '" + dt_hra + "' , " 
 					+ "local= '" + local			
-					+ "' " + "where id=" + id;
+					+ "' " + "where id=" + id_camp;
 
 			smt.execute(sql);
 			bd.conn.close();
@@ -144,22 +181,24 @@ public class Partida {
 	/**
 	 * Listar partidas cadastradas
 	 */
-	public void listar() {
+	public void listar(int id_camp) {
 		try {
 			bd.getConnection();
 			smt = bd.conn.createStatement();
 			ResultSet rs; 
-			String sql = "select * from partidas";
+			String sql = "select p.id, c.nome, e.nome, p.data_e_hora, p.local " +
+					"from partidas p, campeonatos c, equipes e " +
+					"where c.id = p.id_campeonato and " +
+					"e.id = p.id_equipe_1";
 
 			rs = smt.executeQuery(sql); 
 			
 			while (rs.next() == true) {
 				util.p(rs.getInt(1) 
-						+ "    " + rs.getInt(2)
-						+ "    " + rs.getInt(3) 
-						+ "    " + rs.getInt(4)
-						+ "    " + rs.getString(5)
-						+ "    " + rs.getString(6)); 
+						+ "    " + rs.getString(2)
+						+ "    " + rs.getString(3) 
+						+ "    " + rs.getString(4)
+						+ "    " + rs.getString(5)); 
 			}
 			
 			rs.close();
@@ -177,12 +216,13 @@ public class Partida {
 	/**
 	 * Deletar partida cadastrada
 	 */
-	public void deletar(int id) {
+	public void deletar(int id_camp) {
 		try {
 			bd.getConnection();
 			smt = bd.conn.createStatement();
 
-			sql = "delete from partidas " + "where id = " + id;
+			sql = "delete from partidas " 
+				+ "where id = " + id_camp;
 
 			smt.execute(sql);
 			bd.conn.close();

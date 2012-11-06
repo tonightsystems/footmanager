@@ -33,11 +33,16 @@ public class Principal {
 	public static Campeonato camp = new Campeonato();
 	
 	/**
+	 * Objeto Partida
+	 */
+	public static Partida partida = new Partida();
+	
+	/**
 	 * Declaracao Variaveis
 	 */
 	public static String teste;
 	public static int anterior = 0;
-	public static int cod;
+	public static int cod, id_camp;
 
 	/**
 	 * Guarda a tela acessada no momento:
@@ -59,7 +64,11 @@ public class Principal {
 	 * 14 = Visualizar jogadores
 	 * 15 = Editar Jogador Cadastrado
 	 * 16 = Deletar Jogador Cadastrado
-
+	 * 17 = Cadastrar nova partida
+	 * 18 = Visualizar partidas
+	 * 19 = Editar partida Cadastrada
+	 * 20 = Deletar partida Cadastrada
+	 * 
 	 * 100 = Voltar
 	 * 
 	 * @type {Number}
@@ -136,6 +145,7 @@ public class Principal {
 				util.p("[6] Listar Campeonatos");
 				util.p("[7] Editar Campeonato Cadastrado");
 				util.p("[8] Deletar Campeonato Cadastrado");
+				util.p("[21] Gerenciar Partidas");
 				opcoes(indice);
 			break;
 			
@@ -263,7 +273,6 @@ public class Principal {
 				util.p("Informe o código do jogador a ser editado: ");
 				cod = dados.nextInt();
 				
-				cod = dados.nextInt();
 				util.p(util.t(50));
 				util.l();
 				//jogador.alterar(cod);
@@ -286,7 +295,73 @@ public class Principal {
 				opcoes(indice);
 			break;	
 			
+			case 17 :
+				cabecalhoTab("Cadastro de Partida");
+				partida.cadastrar(id_camp);
+				opcoes(indice);
+			break;
 			
+			case 18 :
+				cabecalhoTab("Partidas Cadastradas");
+				
+				partida.listar(id_camp);
+				opcoes(indice);
+			break;
+			
+			case 19 :
+				cabecalhoTab("Editar Partida Cadastrada");
+				util.p("Partidas Existentes:");
+				util.l();
+				partida.listar(id_camp);
+				util.l();
+				util.p(util.t(50));
+			
+				util.p2("Informe o código da partida a ser editada: ");
+				cod = dados.nextInt();
+				
+				util.p(util.t(50));
+				util.l();
+				partida.alterar(id_camp);
+				util.l();
+				util.p(util.t(50));
+				opcoes(indice);
+			break;
+			
+			case 20 :
+				cabecalhoTab("Deletar Partida Cadastrada");
+				util.p("Partidas Existentes:");
+				util.l();
+				partida.listar(id_camp);
+				util.l();
+				util.p(util.t(50));
+				
+				util.p2("Informe o código da partida a ser deletada: ");
+				cod = dados.nextInt();
+				
+				partida.deletar(id_camp);
+				util.p(util.t(50));
+				opcoes(indice);
+			break;
+			
+			case 21 :
+				cabecalhoTab("Gerenciar Partidas");
+				util.p("Campeonatos Existentes:");
+				util.l();
+				camp.listar();
+				util.l();
+				util.p(util.t(50));
+				util.p2("Informe o código do campeonato: ");
+				id_camp = dados.nextInt();
+				util.p(util.t(50));
+				
+				cabecalhoTab("Partidas");
+				util.p("[17] Cadastrar Nova Partida");
+				util.p("[18] Visualizar Partidas");
+				util.p("[19] Editar Partida Cadastrada");
+				util.p("[20] Deletar Partida Cadastrada");
+				opcoes(indice);
+				
+			break;
 			
 			case 100 :
 				menu(anterior);
