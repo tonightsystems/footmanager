@@ -5,7 +5,7 @@ import java.util.Scanner;
 import projeto.Conexao;
 import projeto.Utilitarios;
 
-public class Campeonatos {
+public class Campeonato {
 		
 	/**
 	 * Recebe os dados informados pelo usuario
@@ -42,13 +42,13 @@ public class Campeonatos {
 			String nome, data_inicio, data_termino;
 			smt = bd.conn.createStatement();
 			
-			util.p("Nome do Campeonato: "); 
+			util.p2("Nome do Campeonato: "); 
 			nome = dados.nextLine();
 					
-			util.p("Data de Inicio: ");    
+			util.p2("Data de Inicio: ");    
 			data_inicio = dados.nextLine();
 			
-			util.p("Data de Termino: ");
+			util.p2("Data de Termino: ");
 			data_termino = dados.nextLine();	
 			
 			sql = "INSERT INTO campeonatos(nome, data_inicio, data_termino) " 
@@ -74,13 +74,13 @@ public class Campeonatos {
 			String nome, data_inicio, data_termino;
 			smt = bd.conn.createStatement();
 			
-			util.p("Nome do Campeonato: "); 
+			util.p2("Nome do Campeonato: "); 
 			nome = dados.nextLine();
 					
-			util.p("Data de Inicio: ");    
+			util.p2("Data de Inicio: ");    
 			data_inicio = dados.nextLine();
 			
-			util.p("Data de Termino: ");
+			util.p2("Data de Termino: ");
 			data_termino = dados.nextLine();
 			
 			sql = "UPDATE campeonatos set " 
@@ -112,15 +112,15 @@ public class Campeonatos {
 			rs = smt.executeQuery(sql);
 			
 			while( rs.next() == true ){
-				  System.out.println( rs.getInt(1) + "    " + rs.getString(2) + "    " + rs.getString(3)+ "    " + rs.getString(4));
+				  util.p( rs.getInt(1) + "    " + rs.getString(2) + "    " + rs.getString(3)+ "    " + rs.getString(4));
 				}
 				rs.close();
 				smt.close();
 				bd.conn.close();
 			}
 			catch( Exception erro  ){
-				System.out.println("Um erro aconteceu.");
-				System.out.println("Descricao: " + erro.getMessage() );
+				util.p("Um erro aconteceu.");
+				util.p("Descricao: " + erro.getMessage() );
 			}
 	}
 	

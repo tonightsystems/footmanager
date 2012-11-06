@@ -43,13 +43,13 @@ public class Equipe {
 			String nome, apelido, mascote;
 			smt = bd.conn.createStatement();
 			
-			System.out.print("Nome da Equipe: "); 
+			util.p2("Nome da Equipe: "); 
 			nome = dados.nextLine();
 					
-			System.out.print("Apelido: ");    
+			util.p2("Apelido: ");    
 			apelido = dados.nextLine();
 			
-			System.out.print("Mascote: ");
+			util.p2("Mascote: ");
 			mascote = dados.nextLine();	
 			
 			sql = "INSERT INTO equipes(nome, apelido, mascote) " 
@@ -77,13 +77,13 @@ public class Equipe {
 			String nome, apelido, mascote;
 			smt = bd.conn.createStatement();
 			
-			System.out.print("Nome da Equipe: "); 
+			util.p2("Nome da Equipe: "); 
 			nome = dados.nextLine();
 					
-			System.out.print("Apelido: ");    
+			util.p2("Apelido: ");    
 			apelido = dados.nextLine();
 			
-			System.out.print("Mascote: ");
+			util.p2("Mascote: ");
 			mascote = dados.nextLine();	
 			
 			sql = "UPDATE equipes set " 
@@ -115,16 +115,17 @@ public class Equipe {
 			rs = smt.executeQuery(sql); //Executa a Query
 			
 			while( rs.next() == true ){
-				  System.out.println( rs.getInt(1) + "    " + rs.getString(2) + "    " + rs.getString(3)+ "    " + rs.getString(4)); //get - pegar/usar
-				}
-				rs.close();
-				smt.close();
-				bd.conn.close();
+				util.p( rs.getInt(1) + "    " + rs.getString(2) + "    " + rs.getString(3)+ "    " + rs.getString(4)); //get - pegar/usar
 			}
-			catch( Exception erro  ){
-				System.out.println("Um erro aconteceu.");
-				System.out.println("Descricao: " + erro.getMessage() );
-			}
+			
+			rs.close();
+			smt.close();
+			bd.conn.close();
+			
+		}catch( Exception erro  ){
+				util.p("Um erro aconteceu.");
+				util.p("Descricao: " + erro.getMessage() );
+		}
 	}
 	
 	/**
