@@ -107,7 +107,7 @@ public class Campeonato {
 			bd.getConnection();
 			smt = bd.conn.createStatement();
 			ResultSet rs;
-			String sql = "select * from campeonatos";
+			String sql = "select * from campeonatos order by nome";
 			
 			rs = smt.executeQuery(sql);
 			
