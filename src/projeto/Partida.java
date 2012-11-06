@@ -43,63 +43,31 @@ public class Partida {
 	 */
 	private static String sql = "";
 
-/*	public void teste(){
-		
-		int id_camp, equipe1, equipe2;
-		
-		util.p("Campeonatos Existentes: ");
-		util.l();
-		camp.listar();
-		util.l();
-		util.p2("Informe o código do campeonato: ");
-		id_camp = dados.nextInt();
-		dados.nextLine();
-		util.p(util.t(50));
-		util.l();
-		
-		util.p("Equipes Existentes: ");
-		util.l();
-		equipe.listar();
-		util.l();
-		util.p2("Informe o código da 1° Equipe: ");
-		equipe1 = dados.nextInt();
-		dados.nextLine();
-		util.p2("Informe o código da 2° Equipe: ");
-		equipe2 = dados.nextInt();
-		dados.nextLine();
-		util.p(util.t(50));
-	}*/
-	
+
 	/**
 	 * Cadastrar nova partida
 	 */
 	public void cadastrar(int id_camp) {
+		
 		try {
-			bd.getConnection();
 			
-			//teste();
+			bd.getConnection();
 			
 			int equipe1 = 0, equipe2 = 0;
 			String dt_hra, local;
 			smt = bd.conn.createStatement();
-			
-/*			util.p("Campeonatos Existentes: ");
-			util.l();
-			camp.listar();
-			util.l();
-			util.p2("Informe o código do campeonato: ");
-			id_camp = dados.nextInt();
-			dados.nextLine();
-			util.p(util.t(50));
-			util.l();
-			*/
-			util.p("Equipes Existentes: ");
+
+			util.p("Equipes Cadastradas: ");
 			util.l();
 			equipe.listar();
 			util.l();
+			util.p(util.t(50));
+			util.l();
+			
 			util.p2("Informe o código da 1° Equipe: ");
 			equipe1 = dados.nextInt();
 			dados.nextLine();
+			
 			util.p2("Informe o código da 2° Equipe: ");
 			equipe2 = dados.nextInt();
 			dados.nextLine();
@@ -134,6 +102,7 @@ public class Partida {
 	 */
 	public void alterar(int id_camp) {
 		try {
+			
 			bd.getConnection();
 			
 			int equipe1, equipe2;
@@ -146,6 +115,7 @@ public class Partida {
 			util.l();
 			util.p(util.t(50));
 			util.l();
+			
 			util.p2("Informe o código da 1° Equipe: ");
 			equipe1 = dados.nextInt();
 			dados.nextLine();
@@ -183,9 +153,11 @@ public class Partida {
 	 */
 	public void listar(int id_camp) {
 		try {
+			
 			bd.getConnection();
 			smt = bd.conn.createStatement();
 			ResultSet rs; 
+			
 			String sql = "select p.id, c.nome, e.nome, p.data_e_hora, p.local " +
 					"from partidas p, campeonatos c, equipes e " +
 					"where c.id = p.id_campeonato and " +
@@ -194,11 +166,13 @@ public class Partida {
 			rs = smt.executeQuery(sql); 
 			
 			while (rs.next() == true) {
+				
 				util.p(rs.getInt(1) 
 						+ "    " + rs.getString(2)
 						+ "    " + rs.getString(3) 
 						+ "    " + rs.getString(4)
 						+ "    " + rs.getString(5)); 
+				
 			}
 			
 			rs.close();
@@ -217,7 +191,9 @@ public class Partida {
 	 * Deletar partida cadastrada
 	 */
 	public void deletar(int id_camp) {
+		
 		try {
+			
 			bd.getConnection();
 			smt = bd.conn.createStatement();
 

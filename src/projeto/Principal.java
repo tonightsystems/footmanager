@@ -302,8 +302,7 @@ public class Principal {
 			break;
 			
 			case 18 :
-				cabecalhoTab("Partidas Cadastradas");
-				
+				cabecalhoTab("Partidas Cadastradas");	
 				partida.listar(id_camp);
 				opcoes(indice);
 			break;
