@@ -38,11 +38,21 @@ public class Principal {
 	public static Partida partida = new Partida();
 	
 	/**
+	 * Objeto Avaliacao
+	 */
+	public static Avaliacao avaliacao = new Avaliacao();	
+	
+	/**
+	 * Objeto Jogador
+	 */
+	public static Jogador jogador = new Jogador();	
+	
+	/**
 	 * Declaracao Variaveis
 	 */
 	public static String teste;
 	public static int anterior = 0;
-	public static int cod, id_camp;
+	public static int cod, id_camp, id_part;
 
 	/**
 	 * Guarda a tela acessada no momento:
@@ -146,6 +156,7 @@ public class Principal {
 				util.p("[7] Editar Campeonato Cadastrado");
 				util.p("[8] Deletar Campeonato Cadastrado");
 				util.p("[21] Gerenciar Partidas");
+				util.p("[26] Gerenciar Avaliações");
 				opcoes(indice);
 			break;
 			
@@ -254,19 +265,19 @@ public class Principal {
 			
 			case 13 :
 				cabecalhoTab("Cadastro de Jogador");
-				//jogador.cadastrar();
+				jogador.cadastrar();
 				opcoes(indice);
 			break;
 			
 			case 14 :
 				cabecalhoTab("Visualizar jogadores");
-				//jogador.listar();
+				jogador.listar();
 				opcoes(indice);
 			break;	
 			
 			case 15 :
 				cabecalhoTab("Editar Jogador Cadastrado");
-				//jogador.listar();
+				jogador.listar();
 				util.l();
 				util.p(util.t(50));
 				
@@ -275,7 +286,7 @@ public class Principal {
 				
 				util.p(util.t(50));
 				util.l();
-				//jogador.alterar(cod);
+				jogador.alterar(cod);
 				util.l();
 				util.p(util.t(50));
 				opcoes(indice);
@@ -283,14 +294,14 @@ public class Principal {
 			
 			case 16 :
 				cabecalhoTab("Deletar Jogador Cadastrado");
-				//jogador.listar();
+				jogador.listar();
 				util.l();
 				util.p(util.t(50));
 				
 				util.p("Informe o código do jogador a ser deletado: ");
 				cod = dados.nextInt();
 				
-				//jogador.deletar(cod);
+				jogador.deletar(cod);
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -358,6 +369,87 @@ public class Principal {
 				util.p("[18] Visualizar Partidas");
 				util.p("[19] Editar Partida Cadastrada");
 				util.p("[20] Deletar Partida Cadastrada");
+				opcoes(indice);
+				
+			break;
+
+			
+			
+			
+			
+			
+			case 22 :
+				cabecalhoTab("Cadastro de Avaliações");
+				avaliacao.cadastrar(id_camp, id_part);
+				opcoes(indice);
+			break;
+			
+			case 23 :
+				cabecalhoTab("Avaliações Cadastradas");	
+				avaliacao.listar(id_camp, id_part);
+				opcoes(indice);
+			break;
+			
+			case 24 :
+				cabecalhoTab("Editar Avaliação Cadastrada");
+				util.p("Avaliações Existentes:");
+				util.l();
+				avaliacao.listar(id_camp, id_part);
+				util.l();
+				util.p(util.t(50));
+			
+				util.p2("Informe o código da avaliação a ser editada: ");
+				cod = dados.nextInt();
+				
+				util.p(util.t(50));
+				util.l();
+				avaliacao.alterar(id_camp, id_part, cod);
+				util.l();
+				util.p(util.t(50));
+				opcoes(indice);
+			break;
+			
+			case 25 :
+				cabecalhoTab("Deletar Avaliação Cadastrada");
+				util.p("Avaliações Existentes:");
+				util.l();
+				avaliacao.listar(id_camp, id_part);
+				util.l();
+				util.p(util.t(50));
+				
+				util.p2("Informe o código da avaliação a ser deletada: ");
+				cod = dados.nextInt();
+				
+				avaliacao.deletar(cod);
+				util.p(util.t(50));
+				opcoes(indice);
+			break;
+			
+			case 26 :
+				cabecalhoTab("Gerenciar Avaliações");
+				util.p("Campeonatos Existentes:");
+				util.l();
+				camp.listar();
+				util.l();
+				util.p(util.t(50));
+				util.p2("Informe o código do campeonato: ");
+				id_camp = dados.nextInt();
+				util.p(util.t(50));
+				
+				util.p("Partidas Existentes:");
+				util.l();
+				partida.listar(id_camp);
+				util.l();
+				util.p(util.t(50));
+				util.p2("Informe o código da partida: ");
+				id_part = dados.nextInt();
+				util.p(util.t(50));
+				
+				cabecalhoTab("Avaliações");
+				util.p("[22] Cadastrar Nova Avaliação");
+				util.p("[23] Visualizar Avaliações");
+				util.p("[24] Editar Avaliação Cadastrada");
+				util.p("[25] Deletar Avaliação Cadastrada");
 				opcoes(indice);
 				
 			break;
