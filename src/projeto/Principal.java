@@ -23,6 +23,11 @@ public class Principal {
 	public static Equipe equipe = new Equipe();
 	
 	/**
+	 * Objeto Jogadores
+	 */
+	public static Jogador jogador = new Jogador();
+	
+	/**
 	 * Objeto Conexao
 	 */
 	public static Conexao bd = new Conexao();
@@ -217,8 +222,14 @@ public class Principal {
 				util.l();
 				util.p(util.t(50));
 				
+<<<<<<< HEAD
 				util.p("Informe o código da equipe a ser editada: ");
 				cod = dados.nextInt();
+=======
+				int cod3 = 0;
+				util.p("Informe o código da equipe:");
+				cod3 = dados.nextInt();
+>>>>>>> origin/jogador
 				
 				util.p(util.t(50));
 				util.l();
@@ -237,29 +248,45 @@ public class Principal {
 				util.p("Informe o código da equipe a ser deletada: ");
 				cod = dados.nextInt();
 				
+<<<<<<< HEAD
 				equipe.deletar(cod);
+=======
+				int cod4 = 0;
+				util.p("Informe o código da equipe:");
+				cod4 = dados.nextInt();
+				
+				equipe.deletar(cod4);
+>>>>>>> origin/jogador
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
 			case 13 :
 				cabecalhoTab("Cadastro de Jogador");
-				//jogador.cadastrar();
+				jogador.cadastrar();
 				opcoes(indice);
 			break;
 			
 			case 14 :
+<<<<<<< HEAD
 				cabecalhoTab("Visualizar jogadores");
 				//jogador.listar();
+=======
+				cabecalhoTab("Visualizar Jogadores");
+				jogador.listar();
+				
+				util.p(util.t(50));
+>>>>>>> origin/jogador
 				opcoes(indice);
 			break;	
 			
 			case 15 :
 				cabecalhoTab("Editar Jogador Cadastrado");
-				//jogador.listar();
+				jogador.listar();
 				util.l();
 				util.p(util.t(50));
 				
+<<<<<<< HEAD
 				util.p("Informe o código do jogador a ser editado: ");
 				cod = dados.nextInt();
 				
@@ -268,20 +295,35 @@ public class Principal {
 				util.l();
 				//jogador.alterar(cod);
 				util.l();
+=======
+				int cod5 = 0;
+				util.p("Informe o código da equipe:");
+				cod5 = dados.nextInt();
+				
+				jogador.alterar(cod5);
+>>>>>>> origin/jogador
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
 			case 16 :
 				cabecalhoTab("Deletar Jogador Cadastrado");
-				//jogador.listar();
+				jogador.listar();
 				util.l();
 				util.p(util.t(50));
 				
+<<<<<<< HEAD
 				util.p("Informe o código do jogador a ser deletado: ");
 				cod = dados.nextInt();
 				
 				//jogador.deletar(cod);
+=======
+				int cod6 = 0;
+				util.p("Informe o código da equipe:");
+				cod6 = dados.nextInt();
+				
+				jogador.deletar(cod6);
+>>>>>>> origin/jogador
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -299,7 +341,11 @@ public class Principal {
 		util.p(util.t(50));
 		util.l();
 		if ( indice > 0 && indice < 30 ){
+<<<<<<< HEAD
 			util.p2("Escolha: ");
+=======
+			util.p("Escolha: ");
+>>>>>>> origin/jogador
 			tela = dados.nextInt();
 			menu(tela);
 		}
