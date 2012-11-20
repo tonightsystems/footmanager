@@ -221,15 +221,9 @@ public class Principal {
 				equipe.listar();
 				util.l();
 				util.p(util.t(50));
-				
-<<<<<<< HEAD
+
 				util.p("Informe o código da equipe a ser editada: ");
 				cod = dados.nextInt();
-=======
-				int cod3 = 0;
-				util.p("Informe o código da equipe:");
-				cod3 = dados.nextInt();
->>>>>>> origin/jogador
 				
 				util.p(util.t(50));
 				util.l();
@@ -247,16 +241,8 @@ public class Principal {
 
 				util.p("Informe o código da equipe a ser deletada: ");
 				cod = dados.nextInt();
-				
-<<<<<<< HEAD
+
 				equipe.deletar(cod);
-=======
-				int cod4 = 0;
-				util.p("Informe o código da equipe:");
-				cod4 = dados.nextInt();
-				
-				equipe.deletar(cod4);
->>>>>>> origin/jogador
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -268,15 +254,10 @@ public class Principal {
 			break;
 			
 			case 14 :
-<<<<<<< HEAD
-				cabecalhoTab("Visualizar jogadores");
-				//jogador.listar();
-=======
 				cabecalhoTab("Visualizar Jogadores");
 				jogador.listar();
 				
 				util.p(util.t(50));
->>>>>>> origin/jogador
 				opcoes(indice);
 			break;	
 			
@@ -286,22 +267,15 @@ public class Principal {
 				util.l();
 				util.p(util.t(50));
 				
-<<<<<<< HEAD
 				util.p("Informe o código do jogador a ser editado: ");
 				cod = dados.nextInt();
 				
 				cod = dados.nextInt();
 				util.p(util.t(50));
 				util.l();
-				//jogador.alterar(cod);
+				jogador.alterar(cod);
 				util.l();
-=======
-				int cod5 = 0;
-				util.p("Informe o código da equipe:");
-				cod5 = dados.nextInt();
-				
-				jogador.alterar(cod5);
->>>>>>> origin/jogador
+
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -311,19 +285,11 @@ public class Principal {
 				jogador.listar();
 				util.l();
 				util.p(util.t(50));
-				
-<<<<<<< HEAD
+
 				util.p("Informe o código do jogador a ser deletado: ");
 				cod = dados.nextInt();
 				
-				//jogador.deletar(cod);
-=======
-				int cod6 = 0;
-				util.p("Informe o código da equipe:");
-				cod6 = dados.nextInt();
-				
-				jogador.deletar(cod6);
->>>>>>> origin/jogador
+				jogador.deletar(cod);
 				util.p(util.t(50));
 				opcoes(indice);
 			break;	
@@ -338,16 +304,16 @@ public class Principal {
 				util.p("Saindo...");
 			break;
 		}
+		
 		util.p(util.t(50));
 		util.l();
+		
 		if ( indice > 0 && indice < 30 ){
-<<<<<<< HEAD
+
 			util.p2("Escolha: ");
-=======
-			util.p("Escolha: ");
->>>>>>> origin/jogador
 			tela = dados.nextInt();
 			menu(tela);
+			
 		}
 		util.l();
 	}
