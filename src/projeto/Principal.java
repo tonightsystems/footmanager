@@ -315,7 +315,6 @@ public class Principal {
 			menu(tela);
 			
 		}
-		util.l();
 	}
 	
 	/**

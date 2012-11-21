@@ -68,6 +68,8 @@ public class Gol {
 					+ "'" + jogador + "')";
 			
 			smt.execute(sql);
+			util.p("Gol inserido com sucesso!");
+			
 			bd.conn.close();
 		} catch (Exception e) {
 			util.p("Erro: " + e.getMessage());			
@@ -101,6 +103,8 @@ public class Gol {
 			+ "where id=" + id;
 			
 			smt.execute(sql);
+			util.p("Gol alterado com sucesso!");
+			
 			bd.conn.close();
 			
 		} catch (Exception e) {
@@ -145,6 +149,8 @@ public class Gol {
 					+ "where id = " + id;
 			
 			smt.execute(sql);
+			util.p("Gol deletado com sucesso!");
+			
 			bd.conn.close();
 			
 		} catch (Exception e) {	

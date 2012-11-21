@@ -148,6 +148,7 @@ public class Equipe {
 					+ "where id = " + id;
 			
 			smt.execute(sql);
+			util.p("Equipe deletada com sucesso!");
 			bd.conn.close();
 			
 		} catch (Exception e) {

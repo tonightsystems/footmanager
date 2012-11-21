@@ -71,6 +71,8 @@ public class Jogador {
 					+ "'" + id_equipe + "')";
 			
 			smt.execute(sql);
+			util.p("Jogador inserido com sucesso!");
+			
 			bd.conn.close();
 			
 		} catch (Exception e) {
@@ -115,6 +117,8 @@ public class Jogador {
 				+ "where id=" + id;
 			
 			smt.execute(sql);
+			util.p("Jogador alterado com sucesso!");
+			
 			bd.conn.close();
 			
 		} catch (Exception e) {
@@ -161,6 +165,7 @@ public class Jogador {
 				+ "where id = " + id;
 			
 			smt.execute(sql);
+			util.p("Jogador deletado com sucesso!");
 			bd.conn.close();
 			
 		} catch (Exception e) {

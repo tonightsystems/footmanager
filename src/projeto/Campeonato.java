@@ -145,6 +145,7 @@ public class Campeonato {
 					+ "where id = " + id;
 			
 			smt.execute(sql);
+			util.p("Campeonato deletado com sucesso!");
 			bd.conn.close();
 			
 		} catch (Exception e) {
