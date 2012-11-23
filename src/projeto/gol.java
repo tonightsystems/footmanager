@@ -117,6 +117,8 @@ public class Gol {
 	 */
 	public void listar( ) {
 		try {
+			util.p("Gols Cadastrados: ");
+			util.l();
 			bd.getConnection();
 			smt = bd.conn.createStatement(); 
 			ResultSet rs; 

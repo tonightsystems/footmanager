@@ -113,6 +113,8 @@ public class Campeonato {
 	 */
 	public void listar( ) {
 		try {
+			util.p("Campeonatos Cadastrados: ");
+			util.l();
 			bd.getConnection();
 			smt = bd.conn.createStatement();
 			ResultSet rs;

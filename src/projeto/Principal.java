@@ -38,11 +38,21 @@ public class Principal {
 	public static Campeonato camp = new Campeonato();
 	
 	/**
+	 * Objeto Avaliacao
+	 */
+	public static Avaliacao avaliacao = new Avaliacao();
+	
+	/**
+	 * Objeto Gol
+	 */
+	public static Gol gol = new Gol();
+	
+	/**
 	 * Declaracao Variaveis
 	 */
 	public static String teste;
 	public static int anterior = 0;
-	public static int cod;
+	public static int cod, id_part, id_joga, id_equi;
 
 	/**
 	 * Guarda a tela acessada no momento:
@@ -56,14 +66,15 @@ public class Principal {
 	 * 6 = Visualizar Todos os Campeonatos
 	 * 7 = Editar Campeonato Cadastrado
 	 * 8 = Deletar Campeonato Cadastrado
-	 * 9 = Cadastrar Nova Equipe
-	 * 10 = Visualizar Todas as Equipes
-	 * 11 = Editar Equipe Cadastrada
-	 * 12 = Deletar Equipe Cadastrada
-	 * 13 = Cadastrar novo jogador
-	 * 14 = Visualizar jogadores
-	 * 15 = Editar Jogador Cadastrado
-	 * 16 = Deletar Jogador Cadastrado
+	 * 9 = Gerenciar Campeonato
+	 * 10 = Cadastrar Nova Equipe
+	 * 11 = Visualizar Todas as Equipes
+	 * 12 = Editar Equipe Cadastrada
+	 * 13 = Deletar Equipe Cadastrada
+	 * 14 = Cadastrar novo jogador
+	 * 15 = Visualizar jogadores
+	 * 16 = Editar Jogador Cadastrado
+	 * 17 = Deletar Jogador Cadastrado
 
 	 * 100 = Voltar
 	 * 
@@ -136,29 +147,30 @@ public class Principal {
 				break;
 			
 			case 2 :
-				cabecalhoTab("Campeonatos");
+				cabecalhoTab("CAMPEONATOS");
 				util.p("[5] Adicionar Novo Campeonato");
 				util.p("[6] Listar Campeonatos");
 				util.p("[7] Editar Campeonato Cadastrado");
 				util.p("[8] Deletar Campeonato Cadastrado");
+				util.p("[9] Gerenciar Campeonato");
 				opcoes(indice);
 			break;
 			
 			case 3 :
-				cabecalhoTab("Equipes");
-				util.p("[9]  Cadastrar Nova Equipe");
-				util.p("[10] Visualizar Todas as Equipes");
-				util.p("[11] Editar Equipe Cadastrada");
-				util.p("[12] Deletar Equipe Cadastrada");
+				cabecalhoTab("EQUIPES");
+				util.p("[10] Cadastrar Nova Equipe");
+				util.p("[11] Visualizar Todas as Equipes");
+				util.p("[12] Editar Equipe Cadastrada");
+				util.p("[13] Deletar Equipe Cadastrada");
 				opcoes(indice);
 			break;
 			
 			case 4 :
-				cabecalhoTab("Jogadores");
-				util.p("[13] Cadastrar Novo Jogador");
-				util.p("[14] Visualizar Jogadores");
-				util.p("[15] Editar Jogador Cadastrado");
-				util.p("[16] Deletar Jogador Cadastrado");
+				cabecalhoTab("JOGADORES");
+				util.p("[14] Cadastrar Novo Jogador");
+				util.p("[15] Visualizar Jogadores");
+				util.p("[16] Editar Jogador Cadastrado");
+				util.p("[17] Deletar Jogador Cadastrado");
 				opcoes(indice);
 			break;
 			
@@ -196,7 +208,7 @@ public class Principal {
 				util.l();
 				util.p(util.t(50));
 				
-				util.p2("Informe o código do campeonato a ser deletado: ");
+				util.p2("Informe o codigo do campeonato a ser deletado: ");
 				cod = dados.nextInt();
 				
 				camp.deletar(cod);
@@ -204,19 +216,38 @@ public class Principal {
 				opcoes(indice);
 			break;	
 			
-			case 9 :
+			case 9 :			
+				cabecalhoTab("GERENCIAMENTO DE CAMPEONATOS");
+				camp.listar();
+				util.l();
+				util.p(util.t(50));
+				
+				util.p2("Informe o codigo do campeonato: ");
+				cod = dados.nextInt();
+				util.p(util.t(50));
+				util.l();
+				
+				if(cod > 0){ 
+					util.p("[20] Partidas");
+					util.p("[21] Avaliacoes dos Jogadores");
+					util.p("[22] Gols");
+				}
+				opcoes(indice);				
+			break;		
+				
+			case 10 :
 				cabecalhoTab("Cadastrar Nova Equipe");
 				equipe.cadastrar();
 				opcoes(indice);
 			break;	
 			
-			case 10 :
+			case 11 :
 				cabecalhoTab("Listagem das Equipes Cadastradas");
 				equipe.listar();
 				opcoes(indice);
 			break;	
 			
-			case 11 :
+			case 12 :
 				cabecalhoTab("Editar Equipe Cadastrada");
 				equipe.listar();
 				util.l();
@@ -233,7 +264,7 @@ public class Principal {
 				opcoes(indice);
 			break;	
 			
-			case 12 :
+			case 13 :
 				cabecalhoTab("Deletar Equipe Cadastrada");
 				equipe.listar();
 				util.l();
@@ -247,13 +278,13 @@ public class Principal {
 				opcoes(indice);
 			break;	
 			
-			case 13 :
+			case 14 :
 				cabecalhoTab("Cadastro de Jogador");
 				jogador.cadastrar();
 				opcoes(indice);
 			break;
 			
-			case 14 :
+			case 15 :
 				cabecalhoTab("Visualizar Jogadores");
 				jogador.listar();
 				
@@ -261,7 +292,7 @@ public class Principal {
 				opcoes(indice);
 			break;	
 			
-			case 15 :
+			case 16 :
 				cabecalhoTab("Editar Jogador Cadastrado");
 				jogador.listar();
 				util.l();
@@ -280,7 +311,7 @@ public class Principal {
 				opcoes(indice);
 			break;	
 			
-			case 16 :
+			case 17 :
 				cabecalhoTab("Deletar Jogador Cadastrado");
 				jogador.listar();
 				util.l();
@@ -294,6 +325,170 @@ public class Principal {
 				opcoes(indice);
 			break;	
 			
+			case 20 :
+				cabecalhoTab("PARTIDAS");
+				
+				/* -------------------- INFORMA SE PARTIDAS JA FORAM GERADAS 
+				if(respPartidas == "true"){
+					util.p("As partidas deste campeonato ja foram geradas!!");
+					partida.listar();
+					util.p("Não é possível edita-las. Deseja excluir todas as partidas deste campeonato? s/n: ");
+					r = dados.nextLine();
+					if(r == "s"){
+						partidas.deletar();
+					}
+				} else {
+					util.p("[] Gerar Partidas");
+					util.p("Partidas geradas com sucesso!");
+				}*/
+				
+				opcoes(indice);
+			break;
+			
+			case 21 :
+				cabecalhoTab("AVALIACOES DOS JOGADORES");
+				
+				//partida.listar();
+				util.l();
+				util.p(util.t(50));				
+				util.p2("Informe o codigo da partida: ");
+				id_part = dados.nextInt();
+				dados.nextLine();
+
+				jogador.listar();
+				util.l();
+				util.p(util.t(50));				
+				util.p2("Informe o codigo do jogador: ");
+				id_joga = dados.nextInt();		
+				
+				if(id_part > 0 && id_joga > 0){
+					util.p("[23] Adicionar Nova Avaliacao");
+					util.p("[24] Listar Avaliacoes");
+					util.p("[25] Editar Avaliacao Cadastrada");
+					util.p("[26] Deletar Avaliacao Cadastrada");
+				}
+				
+				opcoes(indice);
+			break;
+			
+			case 22 :
+				cabecalhoTab("GOLS");
+				
+				//partida.listar();
+				util.l();
+				util.p(util.t(50));				
+				util.p2("Informe o codigo da partida: ");
+				id_part = dados.nextInt();
+				dados.nextLine();
+
+				equipe.listar();
+				util.l();
+				util.p(util.t(50));				
+				util.p2("Informe o codigo da equipe: ");
+				id_equi = dados.nextInt();	
+				dados.nextLine();
+				
+				jogador.listar();
+				util.l();
+				util.p(util.t(50));				
+				util.p2("Informe o codigo do jogador: ");
+				id_joga = dados.nextInt();		
+				
+				if(id_part > 0 && id_equi > 0 && id_joga > 0){
+					util.p("[27] Adicionar Novo Gol ao Jogador");
+					util.p("[28] Listar Gols do Jogador");
+					util.p("[29] Editar Gol Cadastrado");
+					util.p("[30] Deletar Gol Cadastrado");
+				}
+				
+				opcoes(indice);
+			break;
+				
+			case 23 :
+				cabecalhoTab("Cadastrar Nova Avaliacao");
+				avaliacao.cadastrar();
+				opcoes(indice);
+			break;	
+			
+			case 24 :
+				cabecalhoTab("Listagem das Avaliacoes Cadastradas");
+				avaliacao.listar();
+				opcoes(indice);
+			break;	
+			
+			case 25 :
+				cabecalhoTab("Editar Avaliacao Cadastrada");
+/*				equipe.listar();
+				util.l();
+				util.p(util.t(50));
+
+				util.p("Informe o código da equipe a ser editada: ");
+				cod = dados.nextInt();
+				
+				util.p(util.t(50));
+				util.l();
+				equipe.alterar(cod);
+				util.l();
+				util.p(util.t(50));*/
+				opcoes(indice);
+			break;	
+			
+			case 26 :
+				cabecalhoTab("Deletar Avaliacao Cadastrada");
+/*				equipe.listar();
+				util.l();
+				util.p(util.t(50));
+
+				util.p("Informe o código da equipe a ser deletada: ");
+				cod = dados.nextInt();
+
+				equipe.deletar(cod);
+				util.p(util.t(50));*/
+				opcoes(indice);
+			break;		
+			
+			case 27 :
+				cabecalhoTab("Cadastrar Novo Gol ao Jogador");
+				gol.cadastrar();
+				opcoes(indice);
+			break;	
+			
+			case 28 :
+				cabecalhoTab("Listagem dos Gols Cadastrados");
+				gol.listar();
+				opcoes(indice);
+			break;	
+			
+			case 29 :
+				cabecalhoTab("Editar Gol Cadastrado");
+/*				equipe.listar();
+				util.l();
+				util.p(util.t(50));
+
+				util.p("Informe o código da equipe a ser editada: ");
+				cod = dados.nextInt();
+				
+				util.p(util.t(50));
+				util.l();
+				equipe.alterar(cod);
+				util.l();
+				util.p(util.t(50));*/
+				opcoes(indice);
+			break;	
+			
+			case 30 :
+				cabecalhoTab("Deletar Gol Cadastrado");
+/*				equipe.listar();
+				util.l();
+				util.p(util.t(50));
+
+				util.p("Informe o código da equipe a ser deletada: ");
+				cod = dados.nextInt();
+
+				equipe.deletar(cod);
+				util.p(util.t(50));*/
+				opcoes(indice);
+			break;
 			
 			
 			case 100 :
@@ -308,7 +503,7 @@ public class Principal {
 		util.p(util.t(50));
 		util.l();
 		
-		if ( indice > 0 && indice < 30 ){
+		if ( indice > 0 && indice < 101 ){
 
 			util.p2("Escolha: ");
 			tela = dados.nextInt();

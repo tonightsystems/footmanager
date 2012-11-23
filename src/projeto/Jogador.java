@@ -133,6 +133,8 @@ public class Jogador {
 	 */
 	public void listar( ) {
 		try {
+			util.p("Jogadores Cadastrados: ");
+			util.l();
 			bd.getConnection();
 			smt = bd.conn.createStatement(); //createStatement() - Retorna um objeto que representa uma query ou comando
 			ResultSet rs; //Contem o resultado da Query
