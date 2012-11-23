@@ -31,6 +31,11 @@ public class Gol {
 	public static Equipe equipe = new Equipe();
 	
 	/**
+	 * Objeto Jogador
+	 */
+	public static Jogador jogador = new Jogador();
+	
+	/**
 	 * Statement
 	 */
 	private static Statement smt;
@@ -50,8 +55,8 @@ public class Gol {
 			String contra;
 			smt = bd.conn.createStatement();
 			
-			util.p("Qual equipe fez o gol?");
 			equipe.listar();
+			util.p("Qual equipe fez o gol?");
 			time = dados.nextInt();
 			dados.nextLine();
 			
@@ -77,15 +82,16 @@ public class Gol {
 	}
 	
 	/**
-	 * Metodo para editar os gols cadastrados
+	 * Metodo para alterar os gols cadastrados
 	 */
-	public void editar(int id) {
+	public void alterar(int id) {
 		try {
 			bd.getConnection();
-			int jogador, time;
+			int id_joga, time;
 			String contra;
 			smt = bd.conn.createStatement();
 			
+			equipe.listar();		
 			util.p("Qual equipe fez o gol?");
 			time = dados.nextInt();
 			dados.nextLine();
@@ -93,13 +99,14 @@ public class Gol {
 			util.p("O gol foi contra(s ou n)?");
 			contra = dados.nextLine();
 			
+			jogador.listar();
 			util.p("Qual jogador fez o gol?");
-			jogador = dados.nextInt();
+			id_joga = dados.nextInt();
 			
 			sql = "UPDATE gols set"
 			+ "equipe= '" + time + "' , " 
 			+ "contra= '" + contra + "' , " 
-			+ "jogador= '" + jogador + "' "
+			+ "jogador= '" + id_joga + "' "
 			+ "where id=" + id;
 			
 			smt.execute(sql);
@@ -159,4 +166,5 @@ public class Gol {
 				util.p("Erro: " + e.getMessage());
 		}
 	}
+
 }

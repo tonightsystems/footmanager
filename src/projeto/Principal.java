@@ -406,44 +406,44 @@ public class Principal {
 				
 			case 23 :
 				cabecalhoTab("Cadastrar Nova Avaliacao");
-				avaliacao.cadastrar();
+				avaliacao.cadastrar(id_part, id_joga);
 				opcoes(indice);
 			break;	
 			
 			case 24 :
 				cabecalhoTab("Listagem das Avaliacoes Cadastradas");
-				avaliacao.listar();
+				avaliacao.listar(id_part, id_joga);
 				opcoes(indice);
 			break;	
 			
 			case 25 :
 				cabecalhoTab("Editar Avaliacao Cadastrada");
-/*				equipe.listar();
+				
+				avaliacao.listar(id_part, id_joga);
 				util.l();
 				util.p(util.t(50));
-
-				util.p("Informe o código da equipe a ser editada: ");
+				util.p("Informe o codigo da avaliacao a ser editada: ");
 				cod = dados.nextInt();
 				
 				util.p(util.t(50));
 				util.l();
-				equipe.alterar(cod);
+				avaliacao.alterar(cod);
 				util.l();
-				util.p(util.t(50));*/
+				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
 			case 26 :
 				cabecalhoTab("Deletar Avaliacao Cadastrada");
-/*				equipe.listar();
+				avaliacao.listar(id_part, id_joga);
 				util.l();
 				util.p(util.t(50));
 
-				util.p("Informe o código da equipe a ser deletada: ");
+				util.p("Informe o codigo da avaliacao a ser deletada: ");
 				cod = dados.nextInt();
 
-				equipe.deletar(cod);
-				util.p(util.t(50));*/
+				avaliacao.deletar(cod);
+				util.p(util.t(50));
 				opcoes(indice);
 			break;		
 			
@@ -461,32 +461,32 @@ public class Principal {
 			
 			case 29 :
 				cabecalhoTab("Editar Gol Cadastrado");
-/*				equipe.listar();
+				gol.listar();
 				util.l();
 				util.p(util.t(50));
 
-				util.p("Informe o código da equipe a ser editada: ");
+				util.p("Informe o codigo do gol a ser editado: ");
 				cod = dados.nextInt();
 				
 				util.p(util.t(50));
 				util.l();
-				equipe.alterar(cod);
+				gol.alterar(cod);
 				util.l();
-				util.p(util.t(50));*/
+				util.p(util.t(50));
 				opcoes(indice);
 			break;	
 			
 			case 30 :
 				cabecalhoTab("Deletar Gol Cadastrado");
-/*				equipe.listar();
+				gol.listar();
 				util.l();
 				util.p(util.t(50));
 
-				util.p("Informe o código da equipe a ser deletada: ");
+				util.p("Informe o codigo do gol a ser deletado: ");
 				cod = dados.nextInt();
 
-				equipe.deletar(cod);
-				util.p(util.t(50));*/
+				gol.deletar(cod);
+				util.p(util.t(50));
 				opcoes(indice);
 			break;
 			

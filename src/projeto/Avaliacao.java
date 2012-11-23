@@ -62,22 +62,8 @@ public class Avaliacao {
 		try {
 			
 			bd.getConnection();
-			
-			//int id_jogador;
 			String nota;
 			smt = bd.conn.createStatement();
-			
-/*			util.p("Jogadores Cadastrados: ");
-			util.l();
-			jogador.listar();
-			util.l();
-			util.p(util.t(50));
-			util.l();
-			
-			util.p2("Informe o código do Jogador: ");
-			id_jogador = dados.nextInt();
-			dados.nextLine();
-			util.p(util.t(50));*/
 
 			util.p2("Informe a nota do jogador: ");
 			nota = dados.nextLine();		
@@ -101,16 +87,15 @@ public class Avaliacao {
 	/**
 	 * Alterar dados da avaliacao
 	 */
-	public void alterar(int id_camp, int id_part, int cod) {
+	public void alterar(int cod) {
 		try {
 			
 			bd.getConnection();
 			
-			int id_partida = 0, id_jogador;
+			int id_part = 0, id_joga;
 			String nota;
 			smt = bd.conn.createStatement();
 			
-			util.p("Partidas Cadastradas: ");
 			util.l();
 			//partida.listar(id_camp);
 			util.l();
@@ -130,7 +115,7 @@ public class Avaliacao {
 			util.l();
 			
 			util.p2("Informe o código do Jogador: ");
-			id_jogador = dados.nextInt();
+			id_joga = dados.nextInt();
 			dados.nextLine();
 			util.p(util.t(50));
 			
@@ -138,9 +123,10 @@ public class Avaliacao {
 			nota = dados.nextLine();
 			
 			sql = "UPDATE avaliacoes set " 
-					+ "id_partida = '" + id_partida + "' , "
-					+ "id_jogador = '" + id_jogador + "' , " 
-					+ "nota = '" + nota;
+					+ "id_partida = '" + id_part + "' , "
+					+ "id_jogador = '" + id_joga + "' , " 
+					+ "nota = ' " + nota
+					+ "where id = " + cod;
 
 			smt.execute(sql);
 			bd.conn.close();
