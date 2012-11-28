@@ -59,7 +59,6 @@ public class Equipe {
 					+ "'" + mascote + "')";
 			
 			smt.execute(sql);
-			
 			util.l();
 			util.p("Equipe inserida com sucesso!");
 			

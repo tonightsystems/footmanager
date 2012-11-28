@@ -8,8 +8,6 @@ import projeto.Utilitarios;
 
 public class Jogador {
 
-	private static final Object[] String = null;
-
 	/**
 	 * Recebe os dados informados pelo usuario
 	 * @type {Scanner}
@@ -20,6 +18,11 @@ public class Jogador {
 	 * Objeto Conexao
 	 */
 	public static Conexao bd = new Conexao();
+	
+	/**
+	 * Objeto Equipe
+	 */
+	public static Equipe equipe = new Equipe();
 	
 	/**
 	 * Objeto Utilitarios
@@ -57,10 +60,15 @@ public class Jogador {
 			
 			System.out.print("Telefone: ");
 			telefone = dados.nextInt();
-			
-			System.out.print("id_equipe: ");
+
+			util.l();
+			util.p(util.t(50));
+			equipe.listar();
+			util.l();
+
+			util.p2("Informe o codigo da equipe a qual pertence: ");
 			id_equipe = dados.nextInt();
-			dados.nextLine();
+			util.p(util.t(50));
 			
 			sql = "INSERT INTO jogadores(nome, cpf, celular, telefone, id_equipe) " 
 					+ "values( "
@@ -71,6 +79,7 @@ public class Jogador {
 					+ "'" + id_equipe + "')";
 			
 			smt.execute(sql);
+			util.l();
 			util.p("Jogador inserido com sucesso!");
 			
 			bd.conn.close();
@@ -91,22 +100,30 @@ public class Jogador {
 			String nome;
 			int cpf, celular, telefone, id_equipe;
 			smt = bd.conn.createStatement();
-			
-			dados.nextLine();
+
 			System.out.print("Nome do jogador: "); 
 			nome = dados.nextLine();
 					
 			System.out.print("Cpf: ");    
 			cpf = dados.nextInt();
+			dados.nextLine();
 		
 			System.out.print("Celular: ");
 			celular = dados.nextInt();
+			dados.nextLine();
 			
 			System.out.print("Telefone: ");
 			telefone = dados.nextInt();	
+			dados.nextLine();
 			
-			System.out.print("Em qual equipe irá adicioná-lo: ");
+			util.l();
+			util.p(util.t(50));
+			equipe.listar();
+			util.l();
+
+			util.p2("Informe o codigo da equipe a qual pertence: ");
 			id_equipe = dados.nextInt();
+			util.p(util.t(50));
 			
 			sql = "UPDATE jogadores set " 
 				+ "nome= '" + nome + "' , " 
@@ -138,6 +155,7 @@ public class Jogador {
 			bd.getConnection();
 			smt = bd.conn.createStatement(); //createStatement() - Retorna um objeto que representa uma query ou comando
 			ResultSet rs; //Contem o resultado da Query
+			
 			String sql = "select * from jogadores order by nome";
 			
 			rs = smt.executeQuery(sql); //Executa a Query

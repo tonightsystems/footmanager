@@ -48,29 +48,31 @@ public class Gol {
 	/**
 	 * Metodo para cadastrar novo gol	
 	 */
-	public static void cadastrar() {
+	public static void cadastrar(int id_part, int id_joga) {
 		try {
 			bd.getConnection();
-			int jogador, time;
-			String contra;
+			int id_equipe;
+			String gol_contra;
 			smt = bd.conn.createStatement();
 			
 			equipe.listar();
-			util.p("Qual equipe fez o gol?");
-			time = dados.nextInt();
+			util.l();
+			util.p2("Informe a equipe que fez o gol: ");
+			id_equipe = dados.nextInt();
 			dados.nextLine();
 			
-			util.p("O gol foi contra(s ou n)?");
-			contra = dados.nextLine();
+			util.p2("O gol foi contra(1- sim ou 2- nao): ");
+			gol_contra = dados.nextLine();
+			util.l();
+			util.p(util.t(50));		
+			util.l();		
 			
-			util.p("Qual jogador fez o gol?");
-			jogador = dados.nextInt();
-			
-			sql = "INSERT INTO gols(equipe, contra, jogador) " 
+			sql = "INSERT INTO gols(id_partida, id_equipe, id_jogador, gol_contra) " 
 					+ "values( "
-					+ "'" + time + "', " 
-					+ "'" + contra + "', " 
-					+ "'" + jogador + "')";
+					+ "'" + id_part + "', " 
+					+ "'" + id_equipe + "', " 
+					+ "'" + id_joga + "', " 
+					+ "'" + gol_contra + "')";
 			
 			smt.execute(sql);
 			util.p("Gol inserido com sucesso!");
@@ -84,30 +86,37 @@ public class Gol {
 	/**
 	 * Metodo para alterar os gols cadastrados
 	 */
-	public void alterar(int id) {
+	public void alterar(int id_part) {
 		try {
 			bd.getConnection();
-			int id_joga, time;
-			String contra;
+			int id_equipe, id_joga;
+			String gol_contra;
 			smt = bd.conn.createStatement();
-			
-			equipe.listar();		
-			util.p("Qual equipe fez o gol?");
-			time = dados.nextInt();
+
+			equipe.listar();
+			util.l();
+			util.p2("Informe a equipe que fez o gol: ");
+			id_equipe = dados.nextInt();
 			dados.nextLine();
 			
-			util.p("O gol foi contra(s ou n)?");
-			contra = dados.nextLine();
-			
+			util.p2("O gol foi contra(1- sim ou 2- nao): ");
+			gol_contra = dados.nextLine();
+			util.l();
+			util.p(util.t(50));		
+			util.l();		
+
 			jogador.listar();
-			util.p("Qual jogador fez o gol?");
+			util.l();
+			util.p2("Informe o jogador que fez o gol: ");
 			id_joga = dados.nextInt();
+			dados.nextLine();
 			
 			sql = "UPDATE gols set"
-			+ "equipe= '" + time + "' , " 
-			+ "contra= '" + contra + "' , " 
-			+ "jogador= '" + id_joga + "' "
-			+ "where id=" + id;
+				+ "id_partida= " + id_part + " , " 
+				+ "id_equipe= " + id_equipe + " , " 
+				+ "id_jogador= " + id_joga + " , " 
+				+ "gol_contra= " + gol_contra 
+				+ " where id= " + id_part;
 			
 			smt.execute(sql);
 			util.p("Gol alterado com sucesso!");

@@ -36,7 +36,7 @@ public class Avaliacao {
 	/**
 	 * Objeto Partida
 	 */
-	//public static Partida partida = new Partida();
+	public static Partida partida = new Partida();
 	
 	/**
 	 * Objeto Jogador
@@ -75,6 +75,9 @@ public class Avaliacao {
 					+ "'" + nota + "')";
 
 			smt.execute(sql);
+			util.l();
+			util.p("Avaliacao inserida com sucesso!");
+			
 			bd.conn.close();
 
 		} catch (Exception e) {
@@ -87,48 +90,44 @@ public class Avaliacao {
 	/**
 	 * Alterar dados da avaliacao
 	 */
-	public void alterar(int cod) {
+	public void alterar(int cod, int id_aval) {
 		try {
 			
 			bd.getConnection();
 			
-			int id_part = 0, id_joga;
-			String nota;
+			int id_part = 0, id_joga,nota;
 			smt = bd.conn.createStatement();
 			
 			util.l();
-			//partida.listar(id_camp);
+			partida.listar(cod);
 			util.l();
-			util.p(util.t(50));
-			util.l();
-			
-			util.p2("Informe o código da Partida: ");
+			util.p2("Informe o codigo da nova Partida: ");
 			id_part = dados.nextInt();
 			dados.nextLine();
 			util.p(util.t(50));
 
-			util.p("Jogadores Cadastrados: ");
 			util.l();
 			jogador.listar();
-			util.l();
-			util.p(util.t(50));
-			util.l();
-			
-			util.p2("Informe o código do Jogador: ");
+			util.l();	
+			util.p2("Informe o codigo do novo Jogador: ");
 			id_joga = dados.nextInt();
 			dados.nextLine();
+			
 			util.p(util.t(50));
 			
 			util.p2("Informe a Nota: ");
-			nota = dados.nextLine();
+			nota = dados.nextInt();
+			dados.nextLine();
+			util.l();
 			
 			sql = "UPDATE avaliacoes set " 
 					+ "id_partida = '" + id_part + "' , "
 					+ "id_jogador = '" + id_joga + "' , " 
-					+ "nota = ' " + nota
+					+ "nota = ' " + nota + "' "
 					+ "where id = " + cod;
 
 			smt.execute(sql);
+			util.p("Avaliacao alterada com sucesso!");
 			bd.conn.close();
 
 		} catch (Exception e) {
@@ -190,6 +189,7 @@ public class Avaliacao {
 				+ "where id = " + id_aval;
 
 			smt.execute(sql);
+			util.p("Avaliacao deletada com sucesso!");
 			bd.conn.close();
 
 		} catch (Exception e) {
